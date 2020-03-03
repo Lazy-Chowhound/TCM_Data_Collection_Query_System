@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中医经方查询系统</title>
+    <link href="../static/index.css" type="text/css" rel="stylesheet">
+    <script src="/static/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/static/index.js"></script>
+</head>
+<body>
+
+<div class="background">
+    <div class="top">
+        <label class="title">中医经方查询系统</label>
+    </div>
+    <div class="horizontal"></div>
+    <div class="vertical">
+        <button class="button clickbtn prescription">病症——药方</button>
+        <button class="button clickbtn medicine">药物及其疗效</button>
+        <button class="button clickbtn medicine">{{ sym }}</button>
+    </div>
+
+    <div class="loading" id="loading">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="table" id="table"></div>
+
+    <div class="retrieve" id="retrieve">
+        <div class='searcharea'>
+            <label class='searchhint'>请输入药材名:</label>
+            <input class='input' id='videoname' type='text'><br>
+            <button id='searchbutton' class='button searchbutton' onclick='search()'>检索</button>
+        </div>
+        <div id='searchresult'></div>
+    </div>
+
+</div>
+</body>
+</html>
