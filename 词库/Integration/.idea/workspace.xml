@@ -147,6 +147,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="424" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1583243214295" />
+    <state x="372" y="6" key="CommitChangelistDialog2" timestamp="1583243852445">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="372" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1583243852445" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1583243741814">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -167,6 +171,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582613570670" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1583243859627">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1583243859627" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Integration$Integrate.coverage" NAME="Integrate Coverage Results" MODIFIED="1582615398763" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
