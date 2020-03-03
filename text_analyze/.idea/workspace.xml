@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1bac80eb-bbcd-4a75-ab31-9fa95bde69ee" name="Default Changelist" comment="" />
+    <list default="true" id="1bac80eb-bbcd-4a75-ab31-9fa95bde69ee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Apriori算法/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Apriori算法/medical.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Apriori算法/numbering.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Apriori算法/stop_words.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Apriori算法/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Apriori算法/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Apriori算法/Apriori.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Apriori算法/Apriori.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,13 +60,20 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1YFyvQ2krYtRwve3Nl9OsSkbi9u" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -112,11 +128,15 @@
       <workItem from="1582609723878" duration="14509000" />
       <workItem from="1583148199486" duration="2189000" />
       <workItem from="1583218721898" duration="56000" />
+      <workItem from="1583238779599" duration="1226000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582552892265">

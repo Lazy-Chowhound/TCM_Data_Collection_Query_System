@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="15dc0b06-f697-4e40-9d62-6607d30b3b31" name="Default Changelist" comment="" />
+    <list default="true" id="15dc0b06-f697-4e40-9d62-6607d30b3b31" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Apriori算法/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Apriori算法/numbering.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Apriori算法/stop_words.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../text_analyze/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transform.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/中医词库/1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/中医词库/2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/中医词库/3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/中医词库/4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/中医词库/5.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/中医词库/medical.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/中药材词库/中药材词库1.bdict" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/中药材词库/中药材词库1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/中药材词库/中药材词库2.bdict" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/中药材词库/中药材词库2.bdict.le" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/中药材词库/中药材词库2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Apriori算法/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../Apriori算法/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Apriori算法/Apriori.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Apriori算法/Apriori.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../text_analyze/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../text_analyze/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integrate.py" beforeDir="false" afterPath="$PROJECT_DIR$/Integrate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medical.txt" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,14 +44,22 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="ProjectId" id="1YHwEtUexi3CBuikWQAGGzEuxiY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -31,7 +69,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.transform">
     <configuration name="Integrate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Integration" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -54,8 +92,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="transform" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Integration" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/transform.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.transform" />
         <item itemvalue="Python.Integrate" />
       </list>
     </recent_temporary>
@@ -71,29 +132,37 @@
       <option name="presentableId" value="Default" />
       <updated>1582612718251</updated>
       <workItem from="1582612719682" duration="2934000" />
+      <workItem from="1583243173402" duration="558000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1582615660659">
+    <state x="424" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583243214295">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582615660659" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1582615660659">
+    <state x="424" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1583243214295" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1583243741814">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582615660659" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1582615660659">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1583243741814" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1583243741813">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582615660659" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1582615660659">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1583243741813" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1583243741813">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582615660659" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1583243741813" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1583243741813">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1583243741813" />
     <state x="270" y="54" key="SettingsEditor" timestamp="1582613570670">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -101,5 +170,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Integration$Integrate.coverage" NAME="Integrate Coverage Results" MODIFIED="1582615398763" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Integration$transform.coverage" NAME="transform Coverage Results" MODIFIED="1583243741806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

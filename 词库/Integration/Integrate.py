@@ -1,6 +1,8 @@
 import pypinyin
 
 
+# 将多个txt整合到一起
+
 def integrate(file, res):
     for line in file.readlines():
         if line not in res:
