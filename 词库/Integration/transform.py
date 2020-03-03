@@ -60,7 +60,7 @@ class Baidu(object):
 
 
 if __name__ == '__main__':
-    path = '中药材词库/中药材词库1.bdict'
+    path = '中药材词库/中药材词库.bdict'
     bd = Baidu(path)
     bd.be2le()
     bd.le2txt()

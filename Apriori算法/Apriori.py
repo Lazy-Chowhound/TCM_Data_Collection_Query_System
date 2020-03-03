@@ -73,7 +73,6 @@ def aprioriGen(Lk, k):
             L2.sort()
             if L1 == L2:
                 retList.append(Lk[i] | Lk[j])
-                print(Lk[i] | Lk[j])
     return retList
 
 
@@ -105,10 +104,17 @@ def apriori(dataSet, minSupport):
     return L, supportData
 
 
-# 获取关联规则的封装函数
-def generateRules(L, supportData, minConf=0.7):  # supportData 是一个字典
+def generateRules(L, supportData, minConf):
+    """
+    获取关联规则
+    :param L:频繁项集列表
+    :param supportData:频繁项集及其支持度字典
+    :param minConf:最小置信度
+    :return:
+    """
     bigRuleList = []
-    for i in range(1, len(L)):  # 从为2个元素的集合开始
+    # 从为2个元素的频繁项集开始
+    for i in range(1, len(L)):
         for freqSet in L[i]:
             # 只包含单个元素的集合列表
             H1 = [frozenset([item]) for item in freqSet]  # frozenset({2, 3}) 转换为 [frozenset({2}), frozenset({3})]
@@ -120,8 +126,16 @@ def generateRules(L, supportData, minConf=0.7):  # supportData 是一个字典
     return bigRuleList
 
 
-# 对规则进行评估 获得满足最小可信度的关联规则
-def calcConf(freqSet, H, supportData, brl, minConf=0.7):
+def calcConf(freqSet, H, supportData, brl, minConf):
+    """
+    对规则进行评估 获得满足最小置信度的关联规则
+    :param freqSet:
+    :param H:
+    :param supportData:
+    :param brl:
+    :param minConf: 最小置信度
+    :return:
+    """
     prunedH = []  # 创建一个新的列表去返回
     for conseq in H:
         conf = supportData[freqSet] / supportData[freqSet - conseq]  # 计算置信度
@@ -132,8 +146,16 @@ def calcConf(freqSet, H, supportData, brl, minConf=0.7):
     return prunedH
 
 
-# 生成候选规则集合
-def rulesFromConseq(freqSet, H, supportData, brl, minConf=0.7):
+def rulesFromConseq(freqSet, H, supportData, brl, minConf):
+    """
+    生成候选规则集合
+    :param freqSet:
+    :param H:
+    :param supportData:
+    :param brl:
+    :param minConf: 最小置信度
+    :return:
+    """
     m = len(H[0])
     if len(freqSet) > (m + 1):  # 尝试进一步合并
         Hmp1 = aprioriGen(H, m + 1)  # 将单个集合元素两两合并
@@ -145,4 +167,4 @@ def rulesFromConseq(freqSet, H, supportData, brl, minConf=0.7):
 dataSet = loadDataSet()
 L, suppData = apriori(dataSet, minSupport=0.5)
 rules = generateRules(L, suppData, minConf=0.7)
-print(rules)
+print(L)
