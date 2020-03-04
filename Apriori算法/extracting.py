@@ -1,10 +1,9 @@
 import jieba.analyse
-import jieba.posseg as psg
 import re
 import mysql.connector
 
 
-class numbering:
+class extracting:
     connection = None
     cursor = None
     stop_words = ['片', ' ', ',', '，', '各', '两', 'g', '钱', '分', '、', '?', '。', '～', '；', '克', '个', '毫升', 'ml', '只', '枚',
@@ -119,5 +118,5 @@ class numbering:
 
 
 if __name__ == '__main__':
-    numbering = numbering()
+    extract = extracting()
     # numbering.extract_all()
