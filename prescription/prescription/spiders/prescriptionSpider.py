@@ -8,11 +8,11 @@ from lxml import etree
 class PrescriptionspiderSpider(scrapy.Spider):
     name = 'prescriptionSpider'
     # allowed_domains = ['http://www.zysj.com.cn']
-    start_urls = ['http://www.zysj.com.cn/zhongyaofang/index_9.html']
-    # url = "http://www.zysj.com.cn/zhongyaofang/index_{0}.html"
+    start_urls = ['http://www.zysj.com.cn/zhongyaofang/index_1.html']
+    url = "http://www.zysj.com.cn/zhongyaofang/index_{0}.html"
 
-    # page = 1
-    # maxpage = 2
+    page = 1
+    maxpage = 23
 
     connection = None
     cursor = None
@@ -49,7 +49,7 @@ class PrescriptionspiderSpider(scrapy.Spider):
             tmp_url = each.xpath("@href").extract()[0]
             urls.append("http://www.zysj.com.cn/" + tmp_url)
             count += 1
-            if count > 500:
+            if count > 100:
                 break
 
         for each_url in urls:
@@ -76,11 +76,11 @@ class PrescriptionspiderSpider(scrapy.Spider):
             self.insert_database(name, recipel, procedure, function, usage, source)
             self.connection.commit()
 
-        # if self.page < self.maxpage:
-        #     self.page += 1
-        # else:
-        #     self.connection.close()
-        #     self.cursor.close()
-        self.connection.close()
-        self.cursor.close()
-        # return scrapy.Request(self.url.format(str(self.page)), callback=self.parse)
+        if self.page < self.maxpage:
+            self.page += 1
+        else:
+            self.connection.close()
+            self.cursor.close()
+        # self.connection.close()
+        # self.cursor.close()
+        return scrapy.Request(self.url.format(str(self.page)), callback=self.parse)

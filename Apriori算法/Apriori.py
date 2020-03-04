@@ -117,10 +117,11 @@ def generateRules(L, supportData, minConf):
     for i in range(1, len(L)):
         for freqSet in L[i]:
             # 只包含单个元素的集合列表
-            H1 = [frozenset([item]) for item in freqSet]  # frozenset({2, 3}) 转换为 [frozenset({2}), frozenset({3})]
+            # frozenset({2, 3}) 转换为 [frozenset({2}), frozenset({3})]
+            H1 = [frozenset([item]) for item in freqSet]
             # 如果集合元素大于2个，则需要处理才能获得规则
             if i > 1:
-                rulesFromConseq(freqSet, H1, supportData, bigRuleList, minConf)  # 集合元素 集合拆分后的列表 。。。
+                rulesFromConseq(freqSet, H1, supportData, bigRuleList, minConf)
             else:
                 calcConf(freqSet, H1, supportData, bigRuleList, minConf)
     return bigRuleList
@@ -136,9 +137,9 @@ def calcConf(freqSet, H, supportData, brl, minConf):
     :param minConf: 最小置信度
     :return:
     """
-    prunedH = []  # 创建一个新的列表去返回
+    prunedH = []
     for conseq in H:
-        conf = supportData[freqSet] / supportData[freqSet - conseq]  # 计算置信度
+        conf = supportData[freqSet] / supportData[freqSet - conseq]
         if conf >= minConf:
             print(freqSet - conseq, '-->', conseq, 'conf:', conf)
             brl.append((freqSet - conseq, conseq, conf))
@@ -157,10 +158,13 @@ def rulesFromConseq(freqSet, H, supportData, brl, minConf):
     :return:
     """
     m = len(H[0])
-    if len(freqSet) > (m + 1):  # 尝试进一步合并
-        Hmp1 = aprioriGen(H, m + 1)  # 将单个集合元素两两合并
+    # 尝试进一步合并
+    if len(freqSet) > (m + 1):
+        # 将单个集合元素两两合并
+        Hmp1 = aprioriGen(H, m + 1)
         Hmp1 = calcConf(freqSet, Hmp1, supportData, brl, minConf)
-        if len(Hmp1) > 1:  # need at least two sets to merge
+        # 至少两个集合才能合并
+        if len(Hmp1) > 1:
             rulesFromConseq(freqSet, Hmp1, supportData, brl, minConf)
 
 
