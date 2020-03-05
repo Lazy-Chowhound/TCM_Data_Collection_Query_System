@@ -44,12 +44,22 @@ class Filter:
         count = 1
         for item in self.cursor.fetchall():
             drug = str(item[6])
+            # name = str(item[0])
+            # if "//" in drug:
+            #     drug.replace("//", "/")
+            #     self.cursor.execute("UPDATE prescription SET drug=%s WHERE name=%s", [drug, name, ])
+            #     self.connection.commit()
+            flag = 0
+            if drug.rfind("/") == (len(drug) - 1):
+                flag = 1
             # 判断是否有未分割的药材
             split_drug = drug.split("/")
             for each in split_drug:
                 if len(each) == 4:
-                    print(count)
+                    flag = 1
                     break
+            if flag == 1:
+                print(count)
             count += 1
 
 
