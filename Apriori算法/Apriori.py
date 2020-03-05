@@ -1,9 +1,11 @@
 from numpy import *
+import MedicineList
+from time import time
 
 
 # 构造数据
 def loadDataSet():
-    return [[1, 3, 4], [2, 3, 5], [1, 2, 3, 5], [2, 5]]
+    return MedicineList.pres_medicine
 
 
 def createC1(dataSet):
@@ -168,7 +170,15 @@ def rulesFromConseq(freqSet, H, supportData, brl, minConf):
             rulesFromConseq(freqSet, Hmp1, supportData, brl, minConf)
 
 
-dataSet = loadDataSet()
-L, suppData = apriori(dataSet, minSupport=0.5)
-rules = generateRules(L, suppData, minConf=0.7)
-print(L)
+if __name__ == '__main__':
+    start = time()
+
+    dataSet = loadDataSet()
+    L, suppData = apriori(dataSet, minSupport=0.01)
+    rules = generateRules(L, suppData, minConf=0.01)
+    print(L)
+    print(suppData)
+    print(rules)
+
+    end = time()
+    print("运行结束，共花费{}秒".format(int(end - start)))
