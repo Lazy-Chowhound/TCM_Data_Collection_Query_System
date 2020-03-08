@@ -118,7 +118,6 @@ def generateRules(L, supportData, minConf):
     # 从为2个元素的频繁项集开始
     for i in range(1, len(L)):
         for freqSet in L[i]:
-            # 只包含单个元素的集合列表
             # frozenset({2, 3}) 转换为 [frozenset({2}), frozenset({3})]
             H1 = [frozenset([item]) for item in freqSet]
             # 如果集合元素大于2个，则需要处理才能获得规则
@@ -141,6 +140,7 @@ def calcConf(freqSet, H, supportData, brl, minConf):
     """
     prunedH = []
     for conseq in H:
+        # conf{B}=sup{A,B}-sup{A}
         conf = supportData[freqSet] / supportData[freqSet - conseq]
         if conf >= minConf:
             print(freqSet - conseq, '-->', conseq, 'conf:', conf)
@@ -165,7 +165,7 @@ def rulesFromConseq(freqSet, H, supportData, brl, minConf):
         # 将单个集合元素两两合并
         Hmp1 = aprioriGen(H, m + 1)
         Hmp1 = calcConf(freqSet, Hmp1, supportData, brl, minConf)
-        # 至少两个集合才能合并
+        # 不止一条规则满足要求
         if len(Hmp1) > 1:
             rulesFromConseq(freqSet, Hmp1, supportData, brl, minConf)
 
@@ -174,8 +174,8 @@ if __name__ == '__main__':
     start = time()
 
     dataSet = loadDataSet()
-    L, suppData = apriori(dataSet, minSupport=0.01)
-    rules = generateRules(L, suppData, minConf=0.01)
+    L, suppData = apriori(dataSet, minSupport=0.05)
+    rules = generateRules(L, suppData, minConf=0.05)
     print(L)
     print(suppData)
     print(rules)
