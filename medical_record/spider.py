@@ -6,7 +6,7 @@ import mysql.connector
 class recordSpider:
     chrome_driver_path = "C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe"
     browser = None
-    urls = ['https://www.zk120.com/an/ks/%E7%94%B7%E7%A7%91?nav=ys']
+    urls = ['https://www.zk120.com/an/ks/男科?nav=ys', ]
 
     connection = None
     cursor = None
@@ -65,6 +65,7 @@ class recordSpider:
         while cur_link < count:
             # 点击每一个病证
             hyperlinks = self.browser.find_elements_by_xpath("//*[contains(@class,'cls_list')]/li/a")
+            name = hyperlinks[cur_link].get_attribute("textContent")
             hyperlinks[cur_link].click()
             time.sleep(1)
             # 获取医案列表
@@ -73,11 +74,13 @@ class recordSpider:
                 # 获取当前窗口
                 current_window = self.browser.current_window_handle
                 source = record.find_element_by_class_name("resultItemTail").get_attribute("textContent")
-                if "世中联名老中医典型医案" in source or "中医男科名家精选" in source:
+                time.sleep(1)
+                if "世中联名老中医典型医案" in source or "中医男科名家验案精选" in source:
                     record.click()
+                    time.sleep(1)
                     handles = self.browser.window_handles
                     self.browser.switch_to.window(handles[1])
-                    name = self.browser.find_element_by_tag_name('h2').get_attribute("textContent")
+                    # name = self.browser.find_element_by_tag_name('h2').get_attribute("textContent")
                     text = self.browser.find_elements_by_xpath(
                         "//div[@class='detail_wrapper']/div[contains(@class,'space_pl')]/p")
                     content = ""
@@ -111,6 +114,6 @@ class recordSpider:
 
 if __name__ == '__main__':
     spider = recordSpider()
-    spider.login()
+    # spider.login()
     spider.start_crawl()
     spider.end_crawl()
