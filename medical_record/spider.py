@@ -1,5 +1,6 @@
 from selenium import webdriver
 import time
+import mysql.connector
 
 
 class recordSpider:
@@ -7,21 +8,51 @@ class recordSpider:
     browser = None
     urls = ['https://www.zk120.com/an/ks/%E7%94%B7%E7%A7%91?nav=ys']
 
+    connection = None
+    cursor = None
+
     def __init__(self):
         self.browser = webdriver.Chrome(
             executable_path=self.chrome_driver_path)
+        # 隐式等待5s
+        self.browser.implicitly_wait(5)
+        try:
+            self.connection = mysql.connector.connect(user='root', password='061210', database='medical_info')
+        except mysql.connector.Error as e:
+            print('connect fails!{}'.format(e))
+        self.cursor = self.connection.cursor()
 
     def login(self):
         """
         登录
         :return:
         """
+        self.browser.get("https://www.zk120.com/?nav=ys")
         self.browser.find_element_by_link_text("登录").click()
         self.browser.find_element_by_link_text("手机号登录").click()
         self.browser.find_element_by_class_name("pwd_login").click()
         self.browser.find_element_by_id("pwd_id_username").send_keys("13770690766")
         self.browser.find_element_by_id("pwd_id_passwod").send_keys("grxc12106abc123")
         self.browser.find_element_by_id("pwd_login_submit").click()
+
+    def insert_database(self, name, text):
+        """
+        数据插入数据库
+        :param name:
+        :param text:
+        :return:
+        """
+        try:
+            self.cursor.execute("SELECT * FROM medical_record WHERE name=%s", [name])
+        except mysql.connector.Error as e:
+            print('connect fails!{}'.format(e))
+        data = self.cursor.fetchone()
+        if data is None:
+            try:
+                self.cursor.execute("INSERT INTO medical_record VALUES(%s,%s)", [name, text, ])
+                self.connection.commit()
+            except mysql.connector.Error as e:
+                print('insert fails!{}'.format(e))
 
     def crawl_page(self):
         """
@@ -30,12 +61,13 @@ class recordSpider:
         """
         hyperlinks = self.browser.find_elements_by_xpath("//*[contains(@class,'cls_list')]/li/a")
         count = len(hyperlinks)
-        cur_linlk = 0
-        while cur_linlk < count:
+        cur_link = 0
+        while cur_link < count:
+            # 点击每一个病证
             hyperlinks = self.browser.find_elements_by_xpath("//*[contains(@class,'cls_list')]/li/a")
-            hyperlinks[cur_linlk].click()
-            time.sleep(3)
-
+            hyperlinks[cur_link].click()
+            time.sleep(1)
+            # 获取医案列表
             records = self.browser.find_elements_by_class_name('pb15')
             for record in records:
                 # 获取当前窗口
@@ -46,19 +78,25 @@ class recordSpider:
                     handles = self.browser.window_handles
                     self.browser.switch_to.window(handles[1])
                     name = self.browser.find_element_by_tag_name('h2').get_attribute("textContent")
-                    print(name)
                     text = self.browser.find_elements_by_xpath(
                         "//div[@class='detail_wrapper']/div[contains(@class,'space_pl')]/p")
-                    string = ""
-                    for i in text:
-                        string += i.get_attribute("textContent").strip() + " "
-                    print(string)
+                    content = ""
+                    for each in text:
+                        content += each.get_attribute("textContent").strip() + " "
+
+                    mt = self.browser.find_elements_by_xpath(
+                        "//div[@class='detail_wrapper']/div[contains(@class,'space_pl')]/div[@class='mt10']/p")
+                    for each in mt:
+                        content += each.get_attribute("textContent").strip() + " "
+                    self.insert_database(name, content)
+                    # 关闭打开的医案新页面
                     self.browser.close()
+                    # 回到医案列表页面
                     self.browser.switch_to.window(current_window)
                     break
-
+            # 回到病症页面
             self.browser.back()
-            cur_linlk += 1
+            cur_link += 1
 
     def start_crawl(self):
         for url in self.urls:
@@ -67,9 +105,12 @@ class recordSpider:
 
     def end_crawl(self):
         self.browser.close()
+        self.cursor.close()
+        self.connection.close()
 
 
 if __name__ == '__main__':
     spider = recordSpider()
+    spider.login()
     spider.start_crawl()
     spider.end_crawl()
