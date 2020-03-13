@@ -6,7 +6,8 @@ import mysql.connector
 class recordSpider:
     chrome_driver_path = "C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe"
     browser = None
-    urls = ['https://www.zk120.com/an/ks/男科?nav=ys', ]
+    urls = ['https://www.zk120.com/an/ks/耳鼻喉科?nav=ys',
+            'https://www.zk120.com/an/ks/肿瘤科?nav=ys', ]
 
     connection = None
     cursor = None
@@ -52,7 +53,7 @@ class recordSpider:
                 self.cursor.execute("INSERT INTO medical_record VALUES(%s,%s)", [name, text, ])
                 self.connection.commit()
             except mysql.connector.Error as e:
-                print('insert fails!{}'.format(e))
+                print('{}insert fails!{}'.format(name, e))
 
     def crawl_page(self):
         """
@@ -63,8 +64,9 @@ class recordSpider:
         count = len(hyperlinks)
         cur_link = 0
         while cur_link < count:
-            # 点击每一个病证
+            # 点击每一个病症
             hyperlinks = self.browser.find_elements_by_xpath("//*[contains(@class,'cls_list')]/li/a")
+            # 病症名
             name = hyperlinks[cur_link].get_attribute("textContent")
             hyperlinks[cur_link].click()
             time.sleep(1)
@@ -80,7 +82,6 @@ class recordSpider:
                     time.sleep(1)
                     handles = self.browser.window_handles
                     self.browser.switch_to.window(handles[1])
-                    # name = self.browser.find_element_by_tag_name('h2').get_attribute("textContent")
                     text = self.browser.find_elements_by_xpath(
                         "//div[@class='detail_wrapper']/div[contains(@class,'space_pl')]/p")
                     content = ""
@@ -114,6 +115,6 @@ class recordSpider:
 
 if __name__ == '__main__':
     spider = recordSpider()
-    # spider.login()
+    spider.login()
     spider.start_crawl()
     spider.end_crawl()
