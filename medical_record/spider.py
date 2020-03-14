@@ -6,7 +6,7 @@ import mysql.connector
 class recordSpider:
     chrome_driver_path = "C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe"
     browser = None
-    urls = ['https://www.zk120.com/an/ks/骨伤科?nav=ys', ]
+    urls = ['https://www.zk120.com/an/ks/妇产科?nav=ys', ]
 
     connection = None
     cursor = None
@@ -104,7 +104,8 @@ class recordSpider:
             # 回到病症页面
             self.browser.back()
             cur_link += 1
-        print("---------共爬取了{}个医案---------".format(total))
+        if total == count:
+            print("---------共爬取了{}个医案---------".format(total))
 
     def start_crawl(self):
         for url in self.urls:
