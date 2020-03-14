@@ -6,7 +6,8 @@ import mysql.connector
 class recordSpider:
     chrome_driver_path = "C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe"
     browser = None
-    urls = ['https://www.zk120.com/an/ks/妇产科?nav=ys', ]
+    kind = "内科"
+    urls = ['https://www.zk120.com/an/ks/{}?nav=ys'.format(kind), ]
 
     connection = None
     cursor = None
@@ -62,8 +63,7 @@ class recordSpider:
         hyperlinks = self.browser.find_elements_by_xpath("//*[contains(@class,'cls_list')]/li/a")
         count = len(hyperlinks)
         print("共{}个病症".format(count))
-        total = 0
-        cur_link = 0
+        cur_link = 400
         while cur_link < count:
             # 点击每一个病症
             hyperlinks = self.browser.find_elements_by_xpath("//*[contains(@class,'cls_list')]/li/a")
@@ -95,7 +95,6 @@ class recordSpider:
                         content += each.get_attribute("textContent").strip() + " "
                     self.insert_database(name, content)
                     print("---------第{}个病症{}医案爬取完成---------".format(cur_link, name))
-                    total += 1
                     # 关闭打开的医案新页面
                     self.browser.close()
                     # 回到医案列表页面
@@ -104,8 +103,6 @@ class recordSpider:
             # 回到病症页面
             self.browser.back()
             cur_link += 1
-        if total == count:
-            print("---------共爬取了{}个医案---------".format(total))
 
     def start_crawl(self):
         for url in self.urls:
