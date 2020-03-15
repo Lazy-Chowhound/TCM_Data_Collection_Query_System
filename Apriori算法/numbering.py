@@ -1,5 +1,10 @@
 import mysql.connector
 
+"""
+对所有药材编号
+并把每个经方的药材转换为对应编号
+"""
+
 
 class numbering:
     connection = None

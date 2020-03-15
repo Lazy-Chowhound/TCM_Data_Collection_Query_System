@@ -2,6 +2,10 @@ import jieba.analyse
 import re
 import mysql.connector
 
+"""
+初步提取经方药材
+"""
+
 
 class extracting:
     connection = None

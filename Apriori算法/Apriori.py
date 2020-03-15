@@ -2,6 +2,10 @@ from numpy import *
 import MedicineList
 from time import time
 
+"""
+Apriori算法
+"""
+
 
 # 构造数据
 def loadDataSet():

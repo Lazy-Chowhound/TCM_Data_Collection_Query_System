@@ -1,5 +1,9 @@
 import mysql.connector
 
+"""
+对药材进行二次过滤
+"""
+
 
 class Filter:
     connection = None
