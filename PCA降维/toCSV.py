@@ -3,15 +3,20 @@ import csv
 import os
 import mysql.connector
 
+"""
+将数据库数据转换为.csv文件
+"""
+
 
 class toCsv:
-    csvfilePath = "herb.csv"
+    csvfilePath = ""
 
     connection = None
     cursor = None
 
-    def __init__(self):
+    def __init__(self, filePath):
         # 如果存在该文件，则删除之前的
+        self.csvfilePath = filePath
         if os.path.exists(self.csvfilePath):
             os.remove(self.csvfilePath)
         # 重新创建
@@ -27,10 +32,13 @@ class toCsv:
         csvfile = open(self.csvfilePath, 'w', newline="", encoding='utf-8-sig')
         writer = csv.writer(csvfile)
 
+        self.cursor.execute("SELECT * FROM herb")
+
         # 写入标题头
+        # col1 = self.cursor.description[0][0]
+        # col2 = self.cursor.description[1][0]
         writer.writerow(["名称", "功效"])
 
-        self.cursor.execute("SELECT * FROM herb")
         result = self.cursor.fetchall()
         for res in result:
             name = res[0].encode("utf-8").decode('utf8')
@@ -40,5 +48,5 @@ class toCsv:
 
 
 if __name__ == '__main__':
-    to_csv = toCsv()
+    to_csv = toCsv("herb1.csv")
     to_csv.writeCsv()
