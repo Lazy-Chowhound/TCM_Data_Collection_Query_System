@@ -32,13 +32,10 @@ class toCsv:
         csvfile = open(self.csvfilePath, 'w', newline="", encoding='utf-8-sig')
         writer = csv.writer(csvfile)
 
-        self.cursor.execute("SELECT * FROM herb")
-
         # 写入标题头
-        # col1 = self.cursor.description[0][0]
-        # col2 = self.cursor.description[1][0]
         writer.writerow(["名称", "功效"])
 
+        self.cursor.execute("SELECT * FROM herb")
         result = self.cursor.fetchall()
         for res in result:
             name = res[0].encode("utf-8").decode('utf8')
@@ -48,5 +45,5 @@ class toCsv:
 
 
 if __name__ == '__main__':
-    to_csv = toCsv("herb1.csv")
+    to_csv = toCsv("herb.csv")
     to_csv.writeCsv()
