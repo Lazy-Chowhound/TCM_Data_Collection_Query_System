@@ -68,21 +68,40 @@ class ModifyCsv:
         for row in self.rows:
             print(row)
 
-    def set(self, name, column, num=1):
+    def set(self, name, columns, num=1):
+        """
+        将药材的某一列设为1或0
+        :param name:
+        :param column:
+        :param num:
+        :return:
+        """
         items = name.split("、")
         count = 0
         for item in items:
             for i in range(1, len(self.rows)):
                 if self.rows[i][0] == item:
-                    if self.rows[i][column] != num:
-                        count += 1
-                    self.rows[i][column] = num
+                    for column in columns:
+                        if self.rows[i][column] != num:
+                            count += 1
+                        self.rows[i][column] = num
         print("改变了{}项".format(count))
+
+    def filt_untouched(self):
+        for row in range(1, len(self.rows)):
+            flag = 0
+            for col in range(2, 12):
+                if self.rows[row][col] == "1":
+                    flag += 1
+            if flag <= 1:
+                print(self.rows[row][0])
 
 
 if __name__ == '__main__':
     # 操作
     modifier = ModifyCsv('herb.csv', 'herb_ex.csv')
     modifier.read_csv()
+
+    # modifier.filt_untouched()
 
     modifier.write_csv()
