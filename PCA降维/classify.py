@@ -35,12 +35,14 @@ class ModifyCsv:
 
     def filter_symptom(self, symptom, column):
         count = 0
+        changed = []
         for i in range(1, len(self.rows)):
             if symptom in self.rows[i][1]:
                 if self.rows[i][column] != "1":
                     self.rows[i][column] = 1
                     count += 1
-                    print(self.rows[i][0])
+                    changed.append(self.rows[i][0])
+        print(changed)
         print("改变了{}项".format(count))
 
     def get_rows(self):
@@ -66,13 +68,13 @@ class ModifyCsv:
                         self.rows[i][column] = num
         print("改变了{}项".format(count))
 
-    def filt_untouched(self):
+    def filt_untouched(self, limit):
         for row in range(1, len(self.rows)):
             flag = 0
             for col in range(2, 13):
                 if self.rows[row][col] == "1":
                     flag += 1
-            if flag <= 0:
+            if flag <= limit:
                 print(self.rows[row][0])
 
 
@@ -81,28 +83,19 @@ if __name__ == '__main__':
     modifier = ModifyCsv('herb.csv', 'herb_ex.csv')
     modifier.read_csv()
 
-    # modifier.filt_untouched()
+    # modifier.filt_untouched(1)
     # 消食-2 清热解表-3 解毒排毒-4 温里-5 理气-6 驱虫泻下-7
-    # 化痰止咳-8 活血化瘀-9 止血镇痛-10 祛湿-11 安神补益-12
+    # 化痰止咳-8 活血化瘀-9 止血镇痛-10 祛湿-11 安神补益-12 收涩-13
 
     # modifier.filter_symptom("", 5)
-    # modifier.filter_symptom("", 6)
+    # modifier.filter_symptom("", 5)
+    # modifier.filter_symptom("", )
+    # modifier.filter_symptom("", )
+    # modifier.filter_symptom("", )
+    # modifier.filter_symptom("", )
+    # modifier.filter_symptom("", )
+    # modifier.filter_symptom("", )
 
-
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
     # modifier.set("", [], 1)
     # modifier.set("", [], 1)
     # modifier.set("", [], 1)
