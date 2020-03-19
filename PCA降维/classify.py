@@ -21,19 +21,22 @@ class ModifyCsv:
         for row in self.rows:
             self.writer.writerow(row)
 
-    def initCsv(self):
+    def addColumn(self, name):
         """
         添加新列
         :return:
         """
-        headers = ['消食', '清热解表', '清热解毒', '温里', '理气', '驱虫泻下', '化痰止咳', '活血化瘀', '止血', '祛湿']
-        for header in headers:
-            self.rows[0].append(header)
+        self.rows[0].append(name)
         for i in range(1, len(self.rows)):
-            for j in range(2, len(self.rows[0])):
-                self.rows[i].append(0)
+            self.rows[i].append(0)
 
     def filter_symptom(self, symptom, column):
+        """
+        将包含某个症状symptom的对应功效colummn设为1
+        :param symptom:
+        :param column:
+        :return:
+        """
         count = 0
         changed = []
         for i in range(1, len(self.rows)):
@@ -44,10 +47,6 @@ class ModifyCsv:
                     changed.append(self.rows[i][0])
         print(changed)
         print("改变了{}项".format(count))
-
-    def get_rows(self):
-        for row in self.rows:
-            print(row)
 
     def set(self, name, columns, num=1):
         """
@@ -68,14 +67,47 @@ class ModifyCsv:
                         self.rows[i][column] = num
         print("改变了{}项".format(count))
 
-    def filt_untouched(self, limit):
+    def filter_untouched(self, limit):
+        """
+        筛选出功能数为limit的药材名
+        :param limit:
+        :return:
+        """
         for row in range(1, len(self.rows)):
             flag = 0
-            for col in range(2, 13):
+            for col in range(2, 14):
                 if self.rows[row][col] == "1":
                     flag += 1
             if flag <= limit:
                 print(self.rows[row][0])
+
+    def filter_column(self, column, option, except_words):
+        """
+        挑选出某个功效为0或1的药材行，不包括功效含except_words的药材
+        :param column:
+        :param option:
+        :param except_words:
+        :return:
+        """
+        string = ""
+        word = except_words.split("、")
+        i = 1
+        while i < len(self.rows):
+            flag = 0
+            if self.rows[i][column] != str(option):
+                flag = 1
+            for each in word:
+                if each in self.rows[i][1]:
+                    flag = 1
+                    break
+            if flag == 1:
+                del self.rows[i]
+            else:
+                i += 1
+
+        for i in range(1, len(self.rows)):
+            string += self.rows[i][0] + "、"
+        print(string)
 
 
 if __name__ == '__main__':
@@ -83,18 +115,11 @@ if __name__ == '__main__':
     modifier = ModifyCsv('herb.csv', 'herb_ex.csv')
     modifier.read_csv()
 
-    # modifier.filt_untouched(1)
     # 消食-2 清热解表-3 解毒排毒-4 温里-5 理气-6 驱虫泻下-7
     # 化痰止咳-8 活血化瘀-9 止血镇痛-10 祛湿-11 安神补益-12 收涩-13
 
-    # modifier.filter_symptom("", 5)
-    # modifier.filter_symptom("", 5)
-    # modifier.filter_symptom("", )
-    # modifier.filter_symptom("", )
-    # modifier.filter_symptom("", )
-    # modifier.filter_symptom("", )
-    # modifier.filter_symptom("", )
-    # modifier.filter_symptom("", )
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
 
     # modifier.set("", [], 1)
     # modifier.set("", [], 1)
@@ -103,18 +128,7 @@ if __name__ == '__main__':
     # modifier.set("", [], 1)
     # modifier.set("", [], 1)
     # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
-    # modifier.set("", [], 1)
+
     # modifier.set("", [], 1)
     # modifier.set("", [], 1)
     # modifier.set("", [], 1)
