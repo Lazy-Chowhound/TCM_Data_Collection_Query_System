@@ -33,36 +33,15 @@ class ModifyCsv:
             for j in range(2, len(self.rows[0])):
                 self.rows[i].append(0)
 
-    def filter(self):
-        for i in range(1, len(self.rows)):
-            for j in range(2, len(self.rows[0])):
-                if self.rows[0][j] in self.rows[i][1]:
-                    self.rows[i][j] = 1
-            if '解表' in self.rows[i][1]:
-                self.rows[i][3] = 1
-            if '解毒' in self.rows[i][1]:
-                self.rows[i][4] = 1
-            if '驱虫' in self.rows[i][1]:
-                self.rows[i][7] = 1
-            if '泻下' in self.rows[i][1]:
-                self.rows[i][7] = 1
-            if '祛痰' in self.rows[i][1]:
-                self.rows[i][8] = 1
-            if '化痰' in self.rows[i][1]:
-                self.rows[i][8] = 1
-            if '止咳' in self.rows[i][1]:
-                self.rows[i][8] = 1
-            if '活血' in self.rows[i][1]:
-                self.rows[i][9] = 1
-            if '化瘀' in self.rows[i][1]:
-                self.rows[i][9] = 1
-            if '健脾' in self.rows[i][1]:
-                self.rows[i][10] = 1
-
     def filter_symptom(self, symptom, column):
+        count = 0
         for i in range(1, len(self.rows)):
             if symptom in self.rows[i][1]:
-                self.rows[i][column] = 1
+                if self.rows[i][column] != "1":
+                    self.rows[i][column] = 1
+                    count += 1
+                    print(self.rows[i][0])
+        print("改变了{}项".format(count))
 
     def get_rows(self):
         for row in self.rows:
@@ -82,7 +61,7 @@ class ModifyCsv:
             for i in range(1, len(self.rows)):
                 if self.rows[i][0] == item:
                     for column in columns:
-                        if self.rows[i][column] != num:
+                        if self.rows[i][column] != str(num):
                             count += 1
                         self.rows[i][column] = num
         print("改变了{}项".format(count))
@@ -90,10 +69,10 @@ class ModifyCsv:
     def filt_untouched(self):
         for row in range(1, len(self.rows)):
             flag = 0
-            for col in range(2, 12):
+            for col in range(2, 13):
                 if self.rows[row][col] == "1":
                     flag += 1
-            if flag <= 1:
+            if flag <= 0:
                 print(self.rows[row][0])
 
 
@@ -103,5 +82,52 @@ if __name__ == '__main__':
     modifier.read_csv()
 
     # modifier.filt_untouched()
+    # 消食-2 清热解表-3 解毒排毒-4 温里-5 理气-6 驱虫泻下-7
+    # 化痰止咳-8 活血化瘀-9 止血镇痛-10 祛湿-11 安神补益-12
+
+    # modifier.filter_symptom("", 5)
+    # modifier.filter_symptom("", 6)
+
+
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
+    # modifier.set("", [], 1)
 
     modifier.write_csv()
