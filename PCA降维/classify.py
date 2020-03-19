@@ -30,6 +30,22 @@ class ModifyCsv:
         for i in range(1, len(self.rows)):
             self.rows[i].append(0)
 
+    def statistic(self):
+        """
+        筛选出药材功效的总数
+        :return:
+        """
+        data = {}
+        for i in range(1, 13):
+            data[i] = 0
+        for i in range(1, len(self.rows)):
+            count = 0
+            for j in range(2, 14):
+                if self.rows[i][j] == "1":
+                    count += 1
+            data[count] += 1
+        print(data)
+
     def filter_symptom(self, symptom, column):
         """
         将包含某个症状symptom的对应功效colummn设为1
