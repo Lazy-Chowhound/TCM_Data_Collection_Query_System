@@ -125,13 +125,20 @@ class ModifyCsv:
             string += self.rows[i][0] + "、"
         print(string)
 
+    def exportData(self):
+        """
+        导出数据
+        :return:
+        """
+        del self.rows[0]
+        for i in range(0, len(self.rows)):
+            del self.rows[i][1]
+            del self.rows[i][0]
+
 
 if __name__ == '__main__':
     # 操作
     modifier = ModifyCsv('herb.csv', 'herb_ex.csv')
     modifier.read_csv()
-
-    # 消食-2 清热解表-3 解毒排毒-4 温里-5 理气-6 驱虫泻下-7
-    # 化痰止咳-8 活血化瘀-9 止血镇痛-10 祛湿-11 安神补益-12 收涩-13
-
+    modifier.exportData()
     modifier.write_csv()
