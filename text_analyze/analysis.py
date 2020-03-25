@@ -1,39 +1,83 @@
-import jieba
-import jieba.analyse
+# -*- coding: UTF-8 -*-
+import mysql.connector
+import time
 
 
-def apart(words, stop_words):
-    words = list(words)
-    i = 0
-    while i < len(words):
-        if words[i] == ' ' or words[i] == '\xa0':
-            words.pop(i)
-        elif words[i] in stop_words:
-            words.pop(i)
-        else:
-            i += 1
-    return words
+class extract:
+    connection = None
+    cursor = None
+
+    def __init__(self, user, password, database):
+        try:
+            self.connection = mysql.connector.connect(user=user, password=password, database=database)
+            self.cursor = self.connection.cursor()
+        except mysql.connector.Error as e:
+            print("connect fails!{}'.format(e)")
+
+    def insertToDatabase(self, name, diagnose, illness):
+        try:
+            self.cursor.execute(
+                "UPDATE medical_info.medical_record SET ` diagnose` = %s,illnessInfo = %s WHERE name=%s",
+                [diagnose, illness, name, ])
+            self.connection.commit()
+            print("-----{}完成-----".format(name))
+        except mysql.connector.Error as e:
+            print("insert fail!{}".format(e))
+
+    def extractInfo(self, name, record):
+        s = record[record.find('现病史'):]
+        pos = s.find("治则治法")
+        if pos == -1:
+            pos = s.find("方名")
+            if pos == -1:
+                pos = s.find("方剂组成")
+        if pos == -1:
+            print("-----{}格式不同寻常，需单独处理-----".format(name))
+            return
+        diagnose = s[:pos]
+
+        illness = s[pos:]
+        illness = self.removeDate(illness)
+        illness = self.removeNote(illness)
+        self.insertToDatabase(name, diagnose, illness)
+
+    def removeNote(self, string):
+        pos = string.find("按语")
+        while pos != -1:
+            blank = string.find(" ", pos)
+            string = string[:pos - 1] + string[blank:]
+            pos = string.find("按语")
+        return string
+
+    def removeDate(self, string):
+        pos = string.find("就诊时间")
+        while pos != -1:
+            blank = string.find(" ", pos)
+            string = string[:pos - 1] + string[blank:]
+            pos = string.find("就诊时间")
+        return string
+
+    def extractAll(self, begin, end):
+        self.cursor.execute("SELECT * FROM medical_info.medical_record")
+        res = self.cursor.fetchall()
+        if end == '*':
+            end = len(res)
+        count = begin
+        while count < end:
+            name = res[count][0]
+            record = res[count][1]
+            self.extractInfo(name, record)
+            count += 1
+
+        self.cursor.close()
+        self.connection.close()
 
 
-s2 = '蒋×  女  17岁患全身性红斑狼疮2年，心、肝、脾、肾均有不同程度损害，长期应用大剂量地塞米松治疗，激素撤减困难。面如满月，颞颐痤疮累' \
-     '累，毛发稀疏，身热颧红，肝区胀痛，四肢关节红肿痛楚。舌质红、苔薄白、脉弦。证属肝郁凝瘀成毒，阴虚火旺营热。先生予疏肝和络、清化' \
-     '解毒之剂；重用土茯苓、忍冬藤各30g  连翘、白薇各9g。连服2月后，诸恙渐平。追踪1年症情稳定。'
+if __name__ == '__main__':
+    ex = extract('root', '061210', 'medical_info')
+    beg = time.time()
 
-# jieba.load_userdict('medical.txt')
-# jieba.analyse.set_stop_words('stop_words.txt')
-# words = jieba.cut(s2, cut_all=False, HMM=True)
+    ex.extractAll(500, "*")
 
-# stop_words = []
-# file = open('stop_words.txt', encoding='utf8')
-# for item in file.readlines():
-#     stop_words.append(item.strip())
-#
-# words = apart(words, stop_words)
-# print(words)
-
-# list = jieba.analyse.extract_tags(s2, topK=20, withWeight=True)
-# print(list)
-#
-#
-# list2 = jieba.analyse.textrank(s2, withWeight=True)
-# print(list2)
+    end = time.time()
+    print("共花费{}秒".format(int(end - beg)))
