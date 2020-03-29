@@ -28,7 +28,6 @@ def display():
     # 获取后端json
     data = request.get_data()
     symptom = json.loads(data)
-    print(symptom)
     return json.dumps(symptom)
 
 

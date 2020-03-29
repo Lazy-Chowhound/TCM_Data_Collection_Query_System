@@ -72,6 +72,23 @@ class extract:
         self.cursor.close()
         self.connection.close()
 
+    def removeLinebreak(self):
+        self.cursor.execute("SELECT * FROM medical_info.medical_record")
+        res = self.cursor.fetchall()
+        for each in res:
+            name = each[0]
+            record = each[1]
+            diagnose = each[2]
+            illness = each[3]
+            record = record.replace("\n", " ")
+            diagnose = diagnose.replace("\n", " ")
+            illness = illness.replace("\n", "")
+            self.cursor.execute(
+                "UPDATE medical_info.medical_record SET record=%s,` diagnose`=%s,illnessInfo=%s WHERE name=%s",
+                [record, diagnose, illness, name, ])
+            self.connection.commit()
+            print("-----{}完成-----".format(name))
+
 
 if __name__ == '__main__':
     ex = extract('root', '061210', 'medical_info')

@@ -1,7 +1,7 @@
 $(function () {
-    $("#search").click(function () {
+    $("#search_button").click(function () {
         const symptom = $("#content").val();
-        if (content === "")
+        if (symptom === "")
             alert("请输入");
         else {
             $.ajax({

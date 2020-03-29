@@ -2,7 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1bac80eb-bbcd-4a75-ab31-9fa95bde69ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1c0bef5e-4fef-4244-9043-e82e8cccdce4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1c0bef5e-4fef-4244-9043-e82e8cccdce4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/record.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/.idea/herb.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/herb/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/herb/items.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/herb/middlewares.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/herb/pipelines.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/herb/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/herb/spiders/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/herb/spiders/herb_spider.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/herb/scrapy.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/zyctdSpider/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/zyctdSpider/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/zyctdSpider/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/zyctdSpider/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/zyctdSpider/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/zyctdSpider/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/zyctdSpider/.idea/zyctdSpider.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chinese_herb/zyctdSpider/herbSpider.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis.py" afterDir="false" />
     </list>
@@ -72,7 +97,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SimHash算法" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../中医经方数据查询系统" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -81,7 +106,29 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
-  <component name="RunManager" selected="Python.analysis">
+  <component name="RunManager" selected="Python.test">
+    <configuration name="1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="text_analyze" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="analysis" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="text_analyze" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -128,8 +175,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.analysis" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.analysis" />
+        <item itemvalue="Python.1" />
       </list>
     </recent_temporary>
   </component>
@@ -150,7 +198,9 @@
       <workItem from="1583238779599" duration="1226000" />
       <workItem from="1584953279995" duration="367000" />
       <workItem from="1585022378669" duration="13113000" />
-      <workItem from="1585110445789" duration="1461000" />
+      <workItem from="1585110445789" duration="3918000" />
+      <workItem from="1585118213770" duration="3378000" />
+      <workItem from="1585453282954" duration="610000" />
     </task>
     <servers />
   </component>
@@ -161,30 +211,30 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582552892265">
+    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585119580209">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1582552892265" />
-    <state x="548" y="153" key="FileChooserDialogImpl" timestamp="1585049471710">
+    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1585119580209" />
+    <state x="548" y="153" key="FileChooserDialogImpl" timestamp="1585458748569">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="548" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585049471710" />
-    <state width="1493" height="120" key="GridCell.Tab.0.bottom" timestamp="1585049843161">
+    <state x="548" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585458748569" />
+    <state width="1493" height="183" key="GridCell.Tab.0.bottom" timestamp="1585122624697">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="120" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585049843161" />
-    <state width="1493" height="120" key="GridCell.Tab.0.center" timestamp="1585049843161">
+    <state width="1493" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585122624697" />
+    <state width="1493" height="183" key="GridCell.Tab.0.center" timestamp="1585122624697">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="120" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585049843161" />
-    <state width="1493" height="120" key="GridCell.Tab.0.left" timestamp="1585049843161">
+    <state width="1493" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585122624697" />
+    <state width="1493" height="183" key="GridCell.Tab.0.left" timestamp="1585122624697">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="120" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585049843161" />
-    <state width="1493" height="120" key="GridCell.Tab.0.right" timestamp="1585049843161">
+    <state width="1493" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585122624697" />
+    <state width="1493" height="183" key="GridCell.Tab.0.right" timestamp="1585122624697">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="120" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585049843161" />
+    <state width="1493" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585122624697" />
     <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1582552901084">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -199,7 +249,8 @@
     <state x="478" y="52" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1585049234765" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/text_analyze$test.coverage" NAME="test Coverage Results" MODIFIED="1585035021824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/text_analyze$analysis.coverage" NAME="analysis Coverage Results" MODIFIED="1585049524028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/text_analyze$1.coverage" NAME="1 Coverage Results" MODIFIED="1585119457033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/text_analyze$test.coverage" NAME="test Coverage Results" MODIFIED="1585120970670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/text_analyze$analysis.coverage" NAME="analysis Coverage Results" MODIFIED="1585120447918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

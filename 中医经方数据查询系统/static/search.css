@@ -4,7 +4,7 @@ body {
     height: 700px;
     width: 1600px;
     margin-left: -7px;
-    margin-top: -50px;
+    margin-top: -80px;
 }
 
 .title {
@@ -12,27 +12,27 @@ body {
     margin-top: 130px;
 }
 
-.search {
-    margin-top: 110px;
+.search{
     display: flex;
     justify-content: center;
+    margin-top: 100px;
 }
 
-.search input {
+#content {
     float: left;
     flex: 4;
-    height: 35px;
-    width: 500px;
+    height: 37px;
+    width: 520px;
     outline: none;
     border: 1px solid #B0E2FF;
     box-sizing: border-box;
     padding-left: 10px;
 }
 
-.search button {
+#search_button {
     float: right;
     flex: 1;
-    height: 35px;
+    height: 37px;
     width: 60px;
     background-color: #B0E2FF;
     color: white;
@@ -40,6 +40,16 @@ body {
     outline: none;
 }
 
-.search button:hover {
+#search_button:hover {
     color: black;
+}
+
+.search_option{
+    margin-top: 40px;
+    display: flex;
+    margin-left: 37px;
+}
+
+.search_option input{
+    margin-left: 45px;
 }

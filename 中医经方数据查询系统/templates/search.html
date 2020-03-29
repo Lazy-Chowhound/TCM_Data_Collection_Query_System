@@ -14,8 +14,17 @@
     <h1 class="title">中医经方查询系统</h1>
     <div class="search">
         <form>
-            <input id="content" type="text" placeholder="请输入..."/>
-            <button id="search" type="button">搜 索</button>
+            <div class="search_area">
+                <input id="content" type="text" placeholder="请输入..."/>
+                <button id="search_button" type="button">搜 索</button>
+            </div>
+            <br>
+            <div class="search_option">
+                <label><input type="radio" name="option" value="illness">病 名</label>
+                <label><input type="radio" name="option" value="symptom">症 状</label>
+                <label><input type="radio" name="option" value="herb">药材名</label>
+                <label><input type="radio" name="option" value="record">经方名</label>
+            </div>
         </form>
     </div>
 </div>
