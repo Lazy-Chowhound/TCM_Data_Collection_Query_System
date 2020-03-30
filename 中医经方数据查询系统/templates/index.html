@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>中医经方查询系统</title>
-    <link href="../static/index.css" type="text/css" rel="stylesheet">
-    <script src="/static/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="/static/index.js"></script>
+    <link href="../static/css/index.css" type="text/css" rel="stylesheet">
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/static/js/index.js"></script>
 </head>
 <body>
 
@@ -16,16 +16,14 @@
     <div class="horizontal"></div>
     <div class="vertical">
         <button class="button clickbtn prescription">病症——药方</button>
-        <button class="button clickbtn medicine">药物及其疗效</button>
-        <button class="button clickbtn medicine">{{ sym }}</button>
+        <button class="button clickbtn medicine">药材及疗效</button>
+        <button class="button clickbtn medicine">经 方</button>
     </div>
 
-    <div class="loading" id="loading">
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="display_herb">
+        <span>{{ name }}</span>
+        <span>{{ effect }}</span>
     </div>
-    <div class="table" id="table"></div>
 
     <div class="retrieve" id="retrieve">
         <div class='searcharea'>
