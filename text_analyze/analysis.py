@@ -84,7 +84,7 @@ class extract:
             diagnose = diagnose.replace("\n", " ")
             illness = illness.replace("\n", "")
             self.cursor.execute(
-                "UPDATE medical_info.medical_record SET record=%s,` diagnose`=%s,illnessInfo=%s WHERE name=%s",
+                "UPDATE medical_info.medical_record SET record=%s,diagnose=%s,illnessInfo=%s WHERE name=%s",
                 [record, diagnose, illness, name, ])
             self.connection.commit()
             print("-----{}完成-----".format(name))
