@@ -31,8 +31,7 @@ def index():
 
     elif opt == '3':
         herb = request.args.get('herb')
-        # cursor.execute("SELECT * FROM medical_info.herb WHERE name LIKE '%%%s%%'" % herb)
-        cursor.execute("SELECT * FROM medical_info.herb WHERE name LIKE '%%%s%%'", [herb])
+        cursor.execute("SELECT * FROM medical_info.herb WHERE name LIKE '%%%s%%'" % herb)
         herbs = cursor.fetchall()
         connection.close()
         cursor.close()

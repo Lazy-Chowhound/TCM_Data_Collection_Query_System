@@ -141,8 +141,14 @@
     border-color: #999999;
 }
 
-.display_herb{
-    margin-left: 500px;
-    margin-top: -250px;
+.display_herb {
+    margin-left: 350px;
+    margin-top: -480px;
 }
 
+.separator {
+    margin-left: -50px;
+    width: 80%;
+    color: #987cb9;
+    filter: alpha(opacity=100, finishopacity=0, style=1);
+}
