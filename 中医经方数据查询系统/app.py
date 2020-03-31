@@ -1,5 +1,5 @@
 from datetime import timedelta
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, abort
 import json
 import mysql.connector
 
@@ -19,7 +19,7 @@ def index():
         connection = mysql.connector.connect(user='root', password='061210', database='medical_info')
         cursor = connection.cursor()
     except mysql.connector.Error as e:
-        return
+        abort(500)
     opt = request.args.get('opt')
     if opt == '1':
         illness = request.args.get('illness')
@@ -31,15 +31,12 @@ def index():
 
     elif opt == '3':
         herb = request.args.get('herb')
-        cursor.execute("SELECT * FROM medical_info.herb WHERE name=%s", [herb])
-        res = cursor.fetchone()
-        if res is None:
-            effect = ""
-        else:
-            effect = res[1]
+        # cursor.execute("SELECT * FROM medical_info.herb WHERE name LIKE '%%%s%%'" % herb)
+        cursor.execute("SELECT * FROM medical_info.herb WHERE name LIKE '%%%s%%'", [herb])
+        herbs = cursor.fetchall()
         connection.close()
         cursor.close()
-        return render_template('index.html', name=herb, effect=effect)
+        return render_template('index.html', herbs=herbs)
     elif opt == '4':
         record = request.args.get('record')
         cursor.execute("SELECT * FROM medical_info.prescription WHERE name=%s", [record])

@@ -21,8 +21,10 @@
     </div>
 
     <div class="display_herb">
-        <span>{{ name }}</span>
-        <span>{{ effect }}</span>
+        {% for herb in herbs %}
+            <span>{{ herb[0] }}</span>
+            <span>{{ herb[1] }}</span>
+        {% endfor %}
     </div>
 
     <div class="retrieve" id="retrieve">
