@@ -1,0 +1,22 @@
+.herbArea {
+    position: absolute;
+    left: 325px;
+    top: 130px;
+    width: 975px;
+}
+
+.effect {
+    margin-top: 8px;
+    display: flex;
+}
+
+.hint {
+    flex-shrink: 0;
+}
+
+.separator {
+    margin-left: -15px;
+    width: 100%;
+}
+
+

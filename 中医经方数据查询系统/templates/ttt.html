@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <title>弹窗效果</title>
+    <link href="/static/css/index_base.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+<input type="button" value="123" id="btn">
+<div class="main">
+    <div class="promptBox">
+        <div class="prompt">
+            <label class="prompt_text">您查找的信息不存在！</label>
+            <button class="prompt_cancel"></button>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#btn').click(function () {
+            $(".main").fadeIn();
+            $('.promptBox').delay(300).slideDown();
+        });
+        $('.prompt_cancel').click(function () {
+            $('.promptBox').fadeOut();
+        });
+    });
+</script>
+</body>
+</html>

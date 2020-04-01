@@ -1,0 +1,19 @@
+{% extends "index_base.html" %}
+{% block content %}
+    {% if herbs %}
+        <div class="herbArea">
+            {% for herb in herbs %}
+                <div>药名：{{ herb[0] }}</div>
+                <div class="effect">
+                    <div class="hint">疗效：</div>
+                    <div>{{ herb[1] }}</div>
+                </div>
+                <hr class="separator">
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="notExist">
+            您搜寻的药材不存在！
+        </div>
+    {% endif %}
+{% endblock %}
