@@ -1,16 +1,24 @@
-.background {
-    background-image: url('../image/main_background.jpg');
-    background-size: 100% 100%;
-    height: 710px;
-    width: auto;
-    margin-top: -8px;
-    margin-left: -7px;
+html{
+    height:100%;
 }
 
-.contentArea{
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+    background: url('../image/main_background.jpg') center 0;
+    background-size: 100% 100%;
+    height: 100%;
+    width: auto;
+}
+
+.contentArea {
     position: absolute;
-    top:10px;
-    width:100%;
+    top: 10px;
+    width: 100%;
 }
 
 .top {
@@ -59,12 +67,12 @@
 
 .main {
     position: absolute;
-    top:5px;
-    left:80px;
+    top: 5px;
+    left: 80px;
     display: none;
 }
 
-.promptBox{
+.promptBox {
     display: none;
 }
 
