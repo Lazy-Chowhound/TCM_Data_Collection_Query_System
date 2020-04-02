@@ -12,8 +12,15 @@
             {% endfor %}
         </div>
     {% else %}
-        <div class="notExist">
-            您搜寻的药材不存在！
-        </div>
+        <script>
+            $(function () {
+                $(".main").fadeIn();
+                $('.promptBox').delay(300).slideDown();
+            });
+            $('.prompt_cancel').click(function () {
+                $('.promptBox').fadeOut();
+
+            });
+        </script>
     {% endif %}
 {% endblock %}

@@ -11,24 +11,33 @@
 <body>
 
 <div class="background">
-    <div class="top">
-        <label class="title">中医经方查询系统</label>
+    <div class="contentArea">
+        <div class="top">
+            <label class="title">中医经方查询系统</label>
+        </div>
+        <div class="horizontal"></div>
+        <div class="vertical">
+            <button class="button clickbtn prescription">病症——药方</button>
+            <button class="button clickbtn medicine">药材及疗效</button>
+            <button class="button clickbtn medicine">经 方</button>
+        </div>
+
+        <!--后端数据区域-->
+        {% block content %}
+
+        {% endblock %}
+
     </div>
-    <div class="horizontal"></div>
-    <div class="vertical">
-        <button class="button clickbtn prescription">病症——药方</button>
-        <button class="button clickbtn medicine">药材及疗效</button>
-        <button class="button clickbtn medicine">经 方</button>
+
+    <!--消息弹窗-->
+    <div class="main">
+        <div class="promptBox">
+            <div class="prompt">
+                <label class="prompt_text">您查找的信息不存在！</label>
+                <button class="prompt_cancel"></button>
+            </div>
+        </div>
     </div>
-
-    <div>
-
-    </div>
-
-    {% block content %}
-
-    {% endblock %}
-
 
 </div>
 </body>

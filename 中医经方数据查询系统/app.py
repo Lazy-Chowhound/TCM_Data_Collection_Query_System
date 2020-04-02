@@ -10,7 +10,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
 
 @app.route('/')
 def hello_world():
-    return render_template('ttt.html')
+    return render_template('search.html')
 
 
 @app.route('/index/')
