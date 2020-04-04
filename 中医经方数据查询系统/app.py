@@ -21,13 +21,13 @@ def index():
         opt = request.args.get('opt')
         if opt == '1':
             illness = request.args.get('illness')
-            cursor.execute("SELECT * FROM medical_info.medical_record WHERE name LIKE '%%%s%%'" % illness)
-            illnesses = cursor.fetchall()
-            connection.close()
-            cursor.close()
-            if len(illness) == 0:
-                catalogs = None
+            if illness is None:
+                return render_template('record.html', catalogs=None)
             else:
+                cursor.execute("SELECT * FROM medical_info.medical_record WHERE name LIKE '%%%s%%'" % illness)
+                illnesses = cursor.fetchall()
+                connection.close()
+                cursor.close()
                 catalogs = []
                 for illness in illnesses:
                     catalog = [illness[0]]
@@ -42,7 +42,7 @@ def index():
                     catalog.append(text[beg + 3:end])
 
                     catalogs.append(catalog)
-            return render_template('record.html', catalogs=catalogs)
+                return render_template('record.html', catalogs=catalogs)
 
         elif opt == '2':
             symptom = request.args.get('symptom')

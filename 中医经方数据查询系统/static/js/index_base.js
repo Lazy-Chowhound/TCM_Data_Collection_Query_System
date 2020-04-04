@@ -3,6 +3,7 @@ $(function () {
         $('#record').addClass('clickbtn');
         $('#herb').removeClass('clickbtn');
         $('#prescription').removeClass('clickbtn');
+        window.location.href="/index?"+ 'opt=1';
     });
     $("#herb").click(function () {
         $('#herb').addClass('clickbtn');

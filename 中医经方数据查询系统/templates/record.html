@@ -7,14 +7,17 @@
     </script>
 
     <div class="searchArea">
-        <select id="option" class="option">
-            <option value="illness">病名</option>
-            <option value="symptom">症状</option>
-        </select>
+        <label for="option"></label><select id="option" class="option">
+        <option value="illness">病名</option>
+        <option value="symptom">症状</option>
+    </select>
         <label for="content"><input id="content" type="text" placeholder="请输入..."/></label>
         <button id="searchBtn" type="button">搜 索</button>
     </div>
-    {% if catalogs %}
+
+    {% if catalogs is none %}
+
+    {% elif catalogs | length > 0 %}
         <div class="catalogArea">
             <ul>
                 {% for catalog in catalogs %}
@@ -29,15 +32,14 @@
                 {% endfor %}
             </ul>
         </div>
-    {% else %}
+    {% elif catalogs | length == 0 %}
         <script>
             $(function () {
                 $(".main").fadeIn();
                 $('.promptBox').delay(300).slideDown();
-            });
-            $('.prompt_cancel').click(function () {
-                $('.promptBox').fadeOut();
-
+                $('.prompt_cancel').click(function () {
+                    $('.promptBox').fadeOut();
+                });
             });
         </script>
     {% endif %}
