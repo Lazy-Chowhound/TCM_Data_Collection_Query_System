@@ -1,5 +1,5 @@
 $(function () {
-    $("#search_button").click(function () {
+    $("#searchBtn").click(function () {
         let content = $("#content").val();
         let option = $("input:radio[name='option']:checked").val();
         if (content === "")

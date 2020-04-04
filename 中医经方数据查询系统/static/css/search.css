@@ -31,7 +31,7 @@ body {
     border-bottom-left-radius: 6px;
 }
 
-#search_button {
+#searchBtn {
     float: right;
     flex: 1;
     height: 37px;
@@ -44,7 +44,7 @@ body {
     border-bottom-right-radius: 6px;
 }
 
-#search_button:hover {
+#searchBtn:hover {
     color: black;
     box-shadow: 1px 0 2px 1px #8B8682;
 }

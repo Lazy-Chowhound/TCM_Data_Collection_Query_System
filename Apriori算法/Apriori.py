@@ -178,11 +178,11 @@ if __name__ == '__main__':
     start = time()
 
     dataSet = loadDataSet()
-    L, suppData = apriori(dataSet, minSupport=0.05)
-    rules = generateRules(L, suppData, minConf=0.05)
+    L, suppData = apriori(dataSet, minSupport=0.01)
+    rules = generateRules(L, suppData, minConf=0.3)
     print(L)
     print(suppData)
-    print(rules)
+    # print(rules)
 
     end = time()
     print("运行结束，共花费{}秒".format(int(end - start)))

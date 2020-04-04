@@ -1,7 +1,45 @@
+.searchArea {
+    position: absolute;
+    left: 41%;
+    top: 130px;
+    display: flex;
+}
+
+#content {
+    float: left;
+    flex: 4;
+    height: 30px;
+    width: 250px;
+    outline: none;
+    border: 1px solid #B0E2FF;
+    box-sizing: border-box;
+    padding-left: 10px;
+    border-left: #ffffff;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+#searchBtn {
+    float: right;
+    flex: 1;
+    height: 30px;
+    width: 50px;
+    background-color: #87CEFA;
+    color: white;
+    border-style: none;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+#searchBtn:hover {
+    color: black;
+    box-shadow: 1px 0 2px 1px #8B8682;
+}
+
 .herbArea {
     position: absolute;
     left: 21%;
-    top: 130px;
+    top: 165px;
     width: 62%;
 }
 

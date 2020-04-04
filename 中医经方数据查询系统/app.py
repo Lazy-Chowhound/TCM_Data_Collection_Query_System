@@ -1,7 +1,7 @@
-from datetime import timedelta
-from flask import Flask, render_template, request, abort
 import json
+from datetime import timedelta
 import mysql.connector
+from flask import Flask, render_template, request, abort
 
 app = Flask(__name__)
 
@@ -49,16 +49,19 @@ def index():
 
         elif opt == '3':
             herb = request.args.get('herb')
-            cursor.execute("SELECT * FROM medical_info.herb WHERE name LIKE '%%%s%%'" % herb)
-            herbs = cursor.fetchall()
-            connection.close()
-            cursor.close()
-            if len(herbs) == 0:
-                herbs = None
-            return render_template('herb.html', herbs=herbs)
+            if herb is None:
+                return render_template('herb.html', herbs=None)
+            else:
+                cursor.execute("SELECT * FROM medical_info.herb WHERE name LIKE '%%%s%%'" % herb)
+                herbs = cursor.fetchall()
+                connection.close()
+                cursor.close()
+                return render_template('herb.html', herbs=herbs)
         elif opt == '4':
-            record = request.args.get('record')
-            cursor.execute("SELECT * FROM medical_info.prescription WHERE name=%s", [record])
+            prescription = request.args.get('prescription')
+            if prescription is None:
+                return render_template('prescription.html', prescription=None)
+            cursor.execute("SELECT * FROM medical_info.prescription WHERE name=%s", [prescription])
             res = cursor.fetchone()
         else:
             return render_template('index_base.html')
@@ -73,8 +76,16 @@ def search():
 
 @app.route('/record')
 def displayRecord():
-    name = request.args.get('name')
-    return render_template('detail.html', name=name)
+    try:
+        connection = mysql.connector.connect(user='root', password='061210', database='medical_info')
+        cursor = connection.cursor()
+        name = request.args.get('name')
+        cursor.execute("SELECT * FROM medical_info.medical_record WHERE name=%s", [name])
+        record = cursor.fetchone()
+
+        return render_template('detail.html', name=name)
+    except mysql.connector.Error as e:
+        abort(500)
 
 
 @app.route('/display', methods=['GET', 'POST'])

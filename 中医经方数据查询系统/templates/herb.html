@@ -1,12 +1,21 @@
 {% extends "index_base.html" %}
 {% block content %}
+    <link href="/static/css/herb.css" type="text/css" rel="stylesheet">
+    <script src="/static/js/herb.js" type="text/javascript"></script>
     <script>
         $('#herb').addClass('clickbtn');
         $('#record').removeClass('clickbtn');
         $('#prescription').removeClass('clickbtn');
     </script>
 
-    {% if herbs %}
+    <div class="searchArea">
+        <label for="content"><input id="content" type="text" placeholder="请输入药材名..."/></label>
+        <button id="searchBtn" type="button">搜 索</button>
+    </div>
+
+    {% if herbs is none %}
+
+    {% elif herbs | length > 0 %}
         <div class="herbArea">
             {% for herb in herbs %}
                 <div>药名：{{ herb[0] }}</div>
@@ -17,7 +26,7 @@
                 <hr class="separator">
             {% endfor %}
         </div>
-    {% else %}
+    {% elif herbs | length == 0 %}
         <script>
             $(function () {
                 $(".main").fadeIn();
