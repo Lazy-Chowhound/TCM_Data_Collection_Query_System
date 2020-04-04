@@ -1,9 +1,45 @@
 {% extends "index_base.html" %}
 {% block content %}
+    <link href="/static/css/prescription.css" type="text/css" rel="stylesheet">
     <script>
         $('#prescription').addClass('clickbtn');
         $('#record').removeClass('clickbtn');
         $('#herb').removeClass('clickbtn');
     </script>
+
+    <div class="alphaSearch">
+        <label class="hint">拼音:</label>
+        <div class="alphaArea">
+            <a id="A" href="{{ url_for('index',opt='4',alpha='A') }}">A</a>
+            <a id="B" href="{{ url_for('index',opt='4',alpha='B') }}">B</a>
+            <a id="C" href="{{ url_for('index',opt='4',alpha='C') }}">C</a>
+            <a id="D" href="{{ url_for('index',opt='4',alpha='D') }}">D</a>
+            <a id="E" href="{{ url_for('index',opt='4',alpha='E') }}">E</a>
+            <a id="F" href="{{ url_for('index',opt='4',alpha='F') }}">F</a>
+            <a id="G" href="{{ url_for('index',opt='4',alpha='G') }}">G</a>
+            <a id="H" href="{{ url_for('index',opt='4',alpha='H') }}">H</a>
+            <a id="J" href="{{ url_for('index',opt='4',alpha='J') }}">J</a>
+            <a id="K" href="{{ url_for('index',opt='4',alpha='K') }}">K</a>
+            <a id="L" href="{{ url_for('index',opt='4',alpha='L') }}">L</a>
+            <a id="M" href="{{ url_for('index',opt='4',alpha='M') }}">M</a>
+            <a id="N" href="{{ url_for('index',opt='4',alpha='N') }}">N</a>
+            <a id="O" href="{{ url_for('index',opt='4',alpha='O') }}">O</a>
+            <a id="P" href="{{ url_for('index',opt='4',alpha='P') }}">P</a>
+            <a id="Q" href="{{ url_for('index',opt='4',alpha='Q') }}">Q</a>
+            <a id="R" href="{{ url_for('index',opt='4',alpha='R') }}">R</a>
+            <a id="S" href="{{ url_for('index',opt='4',alpha='S') }}">S</a>
+            <a id="T" href="{{ url_for('index',opt='4',alpha='T') }}">T</a>
+            <a id="W" href="{{ url_for('index',opt='4',alpha='W') }}">W</a>
+            <a id="X" href="{{ url_for('index',opt='4',alpha='X') }}">X</a>
+            <a id="Y" href="{{ url_for('index',opt='4',alpha='Y') }}">Y</a>
+            <a id="Z" href="{{ url_for('index',opt='4',alpha='Z') }}">Z</a>
+        </div>
+    </div>
+
+    <div class="searchArea">
+        <label for="content"><input id="content" type="text" placeholder="请输入药材名..."/></label>
+        <button id="searchBtn" type="button">搜 索</button>
+    </div>
+
 
 {% endblock %}

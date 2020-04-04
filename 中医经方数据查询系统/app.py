@@ -46,6 +46,28 @@ def index():
 
         elif opt == '2':
             symptom = request.args.get('symptom')
+            if symptom is None:
+                return render_template('record.html', catalogs=None)
+            else:
+                cursor.execute("SELECT * FROM medical_info.medical_record WHERE diagnose LIKE '%%%s%%'" % symptom)
+                res = cursor.fetchall()
+                connection.close()
+                cursor.close()
+                catalogs = []
+                for each in res:
+                    catalog = [each[0]]
+                    text = each[1]
+
+                    beg = text.find('主诉：')
+                    end = text.find(' ', beg)
+                    catalog.append(text[beg + 3:end])
+
+                    beg = text.find('出处：')
+                    end = text.find(' ', beg)
+                    catalog.append(text[beg + 3:end])
+
+                    catalogs.append(catalog)
+                return render_template('record.html', catalogs=catalogs)
 
         elif opt == '3':
             herb = request.args.get('herb')
@@ -58,11 +80,14 @@ def index():
                 cursor.close()
                 return render_template('herb.html', herbs=herbs)
         elif opt == '4':
-            prescription = request.args.get('prescription')
-            if prescription is None:
-                return render_template('prescription.html', prescription=None)
-            cursor.execute("SELECT * FROM medical_info.prescription WHERE name=%s", [prescription])
-            res = cursor.fetchone()
+            # prescription = request.args.get('prescription')
+            # if prescription is None:
+            #     return render_template('prescription.html', prescription=None)
+            # cursor.execute("SELECT * FROM medical_info.prescription WHERE name=%s", [prescription])
+            # res = cursor.fetchone()
+            alpha = request.args.get("alpha")
+
+            return render_template('prescription.html')
         else:
             return render_template('index_base.html')
     except mysql.connector.Error as e:
