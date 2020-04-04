@@ -1,5 +1,11 @@
 {% extends "index_base.html" %}
 {% block content %}
+    <script>
+        $('#herb').addClass('clickbtn');
+        $('#record').removeClass('clickbtn');
+        $('#prescription').removeClass('clickbtn');
+    </script>
+
     {% if herbs %}
         <div class="herbArea">
             {% for herb in herbs %}

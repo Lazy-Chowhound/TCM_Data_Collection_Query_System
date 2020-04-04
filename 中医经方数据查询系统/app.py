@@ -21,8 +21,28 @@ def index():
         opt = request.args.get('opt')
         if opt == '1':
             illness = request.args.get('illness')
-            cursor.execute("SELECT * FROM medical_info.medical_record WHERE name=%s", [illness])
-            res = cursor.fetchone()
+            cursor.execute("SELECT * FROM medical_info.medical_record WHERE name LIKE '%%%s%%'" % illness)
+            illnesses = cursor.fetchall()
+            connection.close()
+            cursor.close()
+            if len(illness) == 0:
+                catalogs = None
+            else:
+                catalogs = []
+                for illness in illnesses:
+                    catalog = [illness[0]]
+                    text = illness[1]
+
+                    beg = text.find('主诉：')
+                    end = text.find(' ', beg)
+                    catalog.append(text[beg + 3:end])
+
+                    beg = text.find('出处：')
+                    end = text.find(' ', beg)
+                    catalog.append(text[beg + 3:end])
+
+                    catalogs.append(catalog)
+            return render_template('record.html', catalogs=catalogs)
 
         elif opt == '2':
             symptom = request.args.get('symptom')
@@ -41,7 +61,7 @@ def index():
             cursor.execute("SELECT * FROM medical_info.prescription WHERE name=%s", [record])
             res = cursor.fetchone()
         else:
-            return render_template('herb.html')
+            return render_template('index_base.html')
     except mysql.connector.Error as e:
         abort(500)
 
@@ -49,6 +69,12 @@ def index():
 @app.route('/search')
 def search():
     return render_template('search.html')
+
+
+@app.route('/record')
+def displayRecord():
+    name = request.args.get('name')
+    return render_template('detail.html', name=name)
 
 
 @app.route('/display', methods=['GET', 'POST'])

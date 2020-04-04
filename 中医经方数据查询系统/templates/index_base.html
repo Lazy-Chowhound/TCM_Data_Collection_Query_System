@@ -5,8 +5,11 @@
     <title>中医经方查询系统</title>
     <link href="/static/css/index_base.css" type="text/css" rel="stylesheet">
     <link href="/static/css/herb.css" type="text/css" rel="stylesheet">
+    <link href="/static/css/record.css" type="text/css" rel="stylesheet">
     <script src="/static/js/jquery-3.4.1.min.js"></script>
     <script src="/static/js/index.js" type="text/javascript"></script>
+    <script src="/static/js/record.js" type="text/javascript"></script>
+    <script src="/static/js/index_base.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -17,9 +20,9 @@
         </div>
         <div class="horizontal"></div>
         <div class="vertical">
-            <button class="button clickbtn prescription">病症——药方</button>
-            <button class="button clickbtn medicine">药材及疗效</button>
-            <button class="button clickbtn medicine">经 方</button>
+            <button id="record" class="button">病症——药方</button>
+            <button id="herb" class="button">药材及疗效</button>
+            <button id="prescription" class="button">经 方</button>
         </div>
 
         <!--后端数据区域-->

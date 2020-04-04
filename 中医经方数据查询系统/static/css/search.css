@@ -12,7 +12,7 @@ body {
     margin-top: 130px;
 }
 
-.search{
+.search {
     display: flex;
     justify-content: center;
     margin-top: 100px;
@@ -27,6 +27,8 @@ body {
     border: 1px solid #B0E2FF;
     box-sizing: border-box;
     padding-left: 10px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
 }
 
 #search_button {
@@ -34,22 +36,25 @@ body {
     flex: 1;
     height: 37px;
     width: 60px;
-    background-color: #B0E2FF;
+    background-color: #87CEFA;
     color: white;
     border-style: none;
     outline: none;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 #search_button:hover {
     color: black;
+    box-shadow: 1px 0 2px 1px #8B8682;
 }
 
-.search_option{
+.search_option {
     margin-top: 40px;
     display: flex;
     margin-left: 37px;
 }
 
-.search_option input{
+.search_option input {
     margin-left: 45px;
 }

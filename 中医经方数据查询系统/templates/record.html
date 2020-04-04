@@ -1,0 +1,44 @@
+{% extends "index_base.html" %}
+{% block content %}
+    <script>
+        $('#record').addClass('clickbtn');
+        $('#herb').removeClass('clickbtn');
+        $('#prescription').removeClass('clickbtn');
+    </script>
+
+    <div class="searchArea">
+        <select id="option" class="option">
+            <option value="illness">病名</option>
+            <option value="symptom">症状</option>
+        </select>
+        <label for="content"><input id="content" type="text" placeholder="请输入..."/></label>
+        <button id="searchBtn" type="button">搜 索</button>
+    </div>
+    {% if catalogs %}
+        <div class="catalogArea">
+            <ul>
+                {% for catalog in catalogs %}
+                    <li class="cata">
+                        <a href="{{ url_for('displayRecord',name=catalog[0]) }}">
+                            <div>病名： {{ catalog[0] }}</div>
+                            <div>症状： {{ catalog[1] }}</div>
+                            <div>出处：{{ catalog[2] }}</div>
+                        </a>
+                        <hr class="separator">
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <script>
+            $(function () {
+                $(".main").fadeIn();
+                $('.promptBox').delay(300).slideDown();
+            });
+            $('.prompt_cancel').click(function () {
+                $('.promptBox').fadeOut();
+
+            });
+        </script>
+    {% endif %}
+{% endblock %}

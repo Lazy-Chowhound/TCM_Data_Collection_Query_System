@@ -13,8 +13,8 @@ $(function () {
                 window.location.href = 'index?' + 'opt=2' + '&&symptom=' + content;
             } else if (option === "herb") {
                 window.location.href = 'index?' + 'opt=3' + '&&herb=' + content;
-            } else if (option === "record") {
-                window.location.href = 'index?' + 'opt=4' + '&&record=' + content;
+            } else if (option === "prescription") {
+                window.location.href = 'index?' + 'opt=4' + '&&prescription=' + content;
             }
             // $.ajax({
             //     type: "POST",
