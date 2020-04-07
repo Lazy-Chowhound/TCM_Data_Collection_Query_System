@@ -1,6 +1,7 @@
 {% extends "index_base.html" %}
 {% block content %}
     <link href="/static/css/prescription.css" type="text/css" rel="stylesheet">
+    <script src="/static/js/prescription.js" type="text/javascript"></script>
     <script>
         $('#prescription').addClass('clickbtn');
         $('#record').removeClass('clickbtn');
@@ -10,29 +11,29 @@
     <div class="alphaSearch">
         <label class="hint">拼音:</label>
         <div class="alphaArea">
-            <a id="A" href="{{ url_for('index',opt='4',alpha='A') }}">A</a>
-            <a id="B" href="{{ url_for('index',opt='4',alpha='B') }}">B</a>
-            <a id="C" href="{{ url_for('index',opt='4',alpha='C') }}">C</a>
-            <a id="D" href="{{ url_for('index',opt='4',alpha='D') }}">D</a>
-            <a id="E" href="{{ url_for('index',opt='4',alpha='E') }}">E</a>
-            <a id="F" href="{{ url_for('index',opt='4',alpha='F') }}">F</a>
-            <a id="G" href="{{ url_for('index',opt='4',alpha='G') }}">G</a>
-            <a id="H" href="{{ url_for('index',opt='4',alpha='H') }}">H</a>
-            <a id="J" href="{{ url_for('index',opt='4',alpha='J') }}">J</a>
-            <a id="K" href="{{ url_for('index',opt='4',alpha='K') }}">K</a>
-            <a id="L" href="{{ url_for('index',opt='4',alpha='L') }}">L</a>
-            <a id="M" href="{{ url_for('index',opt='4',alpha='M') }}">M</a>
-            <a id="N" href="{{ url_for('index',opt='4',alpha='N') }}">N</a>
-            <a id="O" href="{{ url_for('index',opt='4',alpha='O') }}">O</a>
-            <a id="P" href="{{ url_for('index',opt='4',alpha='P') }}">P</a>
-            <a id="Q" href="{{ url_for('index',opt='4',alpha='Q') }}">Q</a>
-            <a id="R" href="{{ url_for('index',opt='4',alpha='R') }}">R</a>
-            <a id="S" href="{{ url_for('index',opt='4',alpha='S') }}">S</a>
-            <a id="T" href="{{ url_for('index',opt='4',alpha='T') }}">T</a>
-            <a id="W" href="{{ url_for('index',opt='4',alpha='W') }}">W</a>
-            <a id="X" href="{{ url_for('index',opt='4',alpha='X') }}">X</a>
-            <a id="Y" href="{{ url_for('index',opt='4',alpha='Y') }}">Y</a>
-            <a id="Z" href="{{ url_for('index',opt='4',alpha='Z') }}">Z</a>
+            <a id="A" class="alphaItem" href="{{ url_for('index',opt='4',alpha='A',page='1') }}">A</a>
+            <a id="B" class="alphaItem" href="{{ url_for('index',opt='4',alpha='B',page='1') }}">B</a>
+            <a id="C" class="alphaItem" href="{{ url_for('index',opt='4',alpha='C',page='1') }}">C</a>
+            <a id="D" class="alphaItem" href="{{ url_for('index',opt='4',alpha='D',page='1') }}">D</a>
+            <a id="E" class="alphaItem" href="{{ url_for('index',opt='4',alpha='E',page='1') }}">E</a>
+            <a id="F" class="alphaItem" href="{{ url_for('index',opt='4',alpha='F',page='1') }}">F</a>
+            <a id="G" class="alphaItem" href="{{ url_for('index',opt='4',alpha='G',page='1') }}">G</a>
+            <a id="H" class="alphaItem" href="{{ url_for('index',opt='4',alpha='H',page='1') }}">H</a>
+            <a id="J" class="alphaItem" href="{{ url_for('index',opt='4',alpha='J',page='1') }}">J</a>
+            <a id="K" class="alphaItem" href="{{ url_for('index',opt='4',alpha='K',page='1') }}">K</a>
+            <a id="L" class="alphaItem" href="{{ url_for('index',opt='4',alpha='L',page='1') }}">L</a>
+            <a id="M" class="alphaItem" href="{{ url_for('index',opt='4',alpha='M',page='1') }}">M</a>
+            <a id="N" class="alphaItem" href="{{ url_for('index',opt='4',alpha='N',page='1') }}">N</a>
+            <a id="O" class="alphaItem" href="{{ url_for('index',opt='4',alpha='O',page='1') }}">O</a>
+            <a id="P" class="alphaItem" href="{{ url_for('index',opt='4',alpha='P',page='1') }}">P</a>
+            <a id="Q" class="alphaItem" href="{{ url_for('index',opt='4',alpha='Q',page='1') }}">Q</a>
+            <a id="R" class="alphaItem" href="{{ url_for('index',opt='4',alpha='R',page='1') }}">R</a>
+            <a id="S" class="alphaItem" href="{{ url_for('index',opt='4',alpha='S',page='1') }}">S</a>
+            <a id="T" class="alphaItem" href="{{ url_for('index',opt='4',alpha='T',page='1') }}">T</a>
+            <a id="W" class="alphaItem" href="{{ url_for('index',opt='4',alpha='W',page='1') }}">W</a>
+            <a id="X" class="alphaItem" href="{{ url_for('index',opt='4',alpha='X',page='1') }}">X</a>
+            <a id="Y" class="alphaItem" href="{{ url_for('index',opt='4',alpha='Y',page='1') }}">Y</a>
+            <a id="Z" class="alphaItem" href="{{ url_for('index',opt='4',alpha='Z',page='1') }}">Z</a>
         </div>
     </div>
 
@@ -41,5 +42,92 @@
         <button id="searchBtn" type="button">搜 索</button>
     </div>
 
+    {% if prescriptionAlpha %}
+        <script>
+            $(function () {
+                // 获取url中alpha参数
+                let url = window.location.search;
+                let str = url.substring(url.indexOf("?") + 1);
+                let arr = str.split("&");
+                let alpha = '';
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i].search("alpha") !== -1) {
+                        alpha = arr[i].substring(arr[i].indexOf("=") + 1);
+                    }
+                }
+                $("#" + alpha).removeClass("alphaItem").addClass("selected");
+            });
+        </script>
+        <div class="presAlpha">
+            <ul>
+                {% for each in prescriptionAlpha %}
+                    <li>
+                        <a href="{{ url_for('index',opt='4',prescription=each[0]) }}">{{ each[0] }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <ul class="pagination">
+            {% for %}
+                <li><a></a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if prescriptionCata is undefined %}
+
+    {% elif prescriptionCata | length > 0 %}
+        <div class="presCata">
+            <ul>
+                {% for each in prescriptionCata %}
+                    <li class="presItem">
+                        <a href="{{ url_for('index',opt='4',prescription=each[0]) }}">
+                            <div>名称：{{ each[0] }}</div>
+                            <div>功效：{{ each[1] }}</div>
+                            <div>来源：{{ each[2] }}</div>
+                        </a>
+                        <hr class="separator">
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% elif prescriptionCata | length == 0 %}
+        <script>
+            $(function () {
+                $(".main").fadeIn();
+                $('.promptBox').delay(300).slideDown();
+                $('.prompt_cancel').click(function () {
+                    $('.promptBox').fadeOut();
+                });
+            });
+        </script>
+    {% endif %}
+
+    {% if prescription %}
+        <div class="presDetail">
+            <div class="item">名称：{{ prescription[0] }}</div>
+            <div class="item">
+                <div class="hint">处方：</div>
+                <div>{{ prescription[1] }}</div>
+            </div>
+            {% if prescription[2] != '' %}
+                <div class="item">
+                    <div class="hint">制法：</div>
+                    <div>{{ prescription[2] }}</div>
+                </div>
+            {% endif %}
+            <div class="item">
+                <div class="hint">功能主治：</div>
+                <div>{{ prescription[3] }}</div>
+            </div>
+            {% if prescription[4] != '' %}
+                <div class="item">
+                    <div class="hint">用法用量：</div>
+                    <div>{{ prescription[4] }}</div>
+                </div>
+            {% endif %}
+            <div class="item">来源：{{ prescription[5] }}</div>
+        </div>
+    {% endif %}
 
 {% endblock %}

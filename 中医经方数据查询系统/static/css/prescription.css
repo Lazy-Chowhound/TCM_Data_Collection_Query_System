@@ -2,15 +2,21 @@
     position: absolute;
     left: 30%;
     top: 130px;
-    width:900px;
+    width: 900px;
     display: flex;
     flex-direction: row;
 }
 
-.alphaSearch a {
+.alphaItem {
     text-decoration: none;
     margin-left: 10px;
     color: cornflowerblue;
+}
+
+.selected {
+    text-decoration: underline;
+    margin-left: 10px;
+    color: red;
 }
 
 .searchArea {
@@ -49,5 +55,62 @@
 #searchBtn:hover {
     color: black;
     box-shadow: 1px 0 2px 1px #8B8682;
+}
+
+.presAlpha {
+    position: absolute;
+    left: 22%;
+    top: 200px;
+    width: 62%;
+}
+
+.presAlpha ul {
+    float: left;
+    width: 100%;
+}
+
+.presAlpha li {
+    float: left;
+    width: 25%;
+    margin-top: 10px;
+}
+
+.presAlpha li a{
+    text-decoration: none;
+    color: black;
+}
+
+.presCata {
+    position: absolute;
+    left: 20%;
+    top: 190px;
+    width: 62%;
+}
+
+.presItem a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 15px;
+}
+
+.separator {
+    margin-left: -15px;
+    width: 100%;
+}
+
+.presDetail {
+    position: absolute;
+    left: 22%;
+    top: 200px;
+    width: 60%;
+}
+
+.item {
+    margin-top: 20px;
+    display: flex;
+}
+
+.hint {
+    flex-shrink: 0;
 }
 

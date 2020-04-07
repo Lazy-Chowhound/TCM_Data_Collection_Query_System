@@ -14,7 +14,7 @@ $(function () {
             } else if (option === "herb") {
                 window.location.href = 'index?' + 'opt=3' + '&&herb=' + content;
             } else if (option === "prescription") {
-                window.location.href = 'index?' + 'opt=4' + '&&prescription=' + content;
+                window.location.href = 'index?' + 'opt=4' + '&&prescriptionName=' + content;
             }
             // $.ajax({
             //     type: "POST",

@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1bac80eb-bbcd-4a75-ab31-9fa95bde69ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../中医经方数据查询系统/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../中医经方数据查询系统/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../中医经方数据查询系统/.idea/libraries/jQuery.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/.idea/系统.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/.idea/系统.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../中医经方数据查询系统/static/js/prescription.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/static/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/static/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/static/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/static/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/static/css/herb.css" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/static/css/herb.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/static/css/prescription.css" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/static/css/prescription.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/static/js/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/static/js/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/templates/herb.html" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/templates/herb.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/templates/prescription.html" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/templates/prescription.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/templates/record.html" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/templates/record.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +182,7 @@
       <workItem from="1585118213770" duration="3378000" />
       <workItem from="1585453282954" duration="610000" />
       <workItem from="1585541593684" duration="80000" />
+      <workItem from="1586255446339" duration="20000" />
     </task>
     <task id="LOCAL-00001" summary="更改数据库">
       <created>1585541666221</created>

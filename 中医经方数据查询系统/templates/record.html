@@ -17,14 +17,14 @@
         <button id="searchBtn" type="button">搜 索</button>
     </div>
 
-    {% if catalogs is none %}
+    {% if catalogs is undefined %}
 
     {% elif catalogs | length > 0 %}
         <div class="catalogArea">
             <ul>
                 {% for catalog in catalogs %}
                     <li class="cata">
-                        <a href="{{ url_for('displayRecord',name=catalog[0]) }}">
+                        <a href="{{ url_for('displayRecord',name=catalog[0]) }}" target="_blank">
                             <div>病名： {{ catalog[0] }}</div>
                             <div>症状： {{ catalog[1] }}</div>
                             <div>出处：{{ catalog[2] }}</div>
