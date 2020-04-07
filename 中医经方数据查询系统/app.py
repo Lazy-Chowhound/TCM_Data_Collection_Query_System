@@ -93,8 +93,14 @@ def index():
                 for each in res:
                     if getPinyinInitial(each[0]).upper() == alpha:
                         prescriptionAlpha.append(each)
+                if len(prescriptionAlpha) % 52 == 0:
+                    count = len(prescriptionAlpha) / 52
+                else:
+                    count = len(prescriptionAlpha) // 52 + 1
+                pageCount = []
+                for i in range(count):
+                    pageCount.append(int(i + 1))
                 prescriptionAlpha = prescriptionAlpha[beg:beg + 52]
-                pageCount = len(prescriptionAlpha) / 52
                 return render_template('prescription.html', prescriptionAlpha=prescriptionAlpha, pageCount=pageCount)
             # 按关键字查询
             elif name is not None and alpha is None and prescription is None:

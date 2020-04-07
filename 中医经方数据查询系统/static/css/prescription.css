@@ -75,7 +75,7 @@
     margin-top: 10px;
 }
 
-.presAlpha li a{
+.presAlpha li a {
     text-decoration: none;
     color: black;
 }
@@ -114,3 +114,36 @@
     flex-shrink: 0;
 }
 
+.pageIndex {
+    position: absolute;
+    left: 45%;
+    top: 630px;
+}
+
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+ul.pagination li {
+    display: inline;
+}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+ul.pagination li a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+ul.pagination li a:hover:not(.active) {
+    background-color: #ddd;
+}

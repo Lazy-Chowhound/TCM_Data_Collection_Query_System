@@ -45,19 +45,30 @@
     {% if prescriptionAlpha %}
         <script>
             $(function () {
+                //给页码动态绑定id
+                let pageArray = $(".pagination li a");
+                for (let i = 0; i < pageArray.length; i++)
+                    pageArray.eq(i).attr('id', '' + i);
                 // 获取url中alpha参数
                 let url = window.location.search;
                 let str = url.substring(url.indexOf("?") + 1);
                 let arr = str.split("&");
                 let alpha = '';
+                let page = '';
                 for (let i = 0; i < arr.length; i++) {
                     if (arr[i].search("alpha") !== -1) {
                         alpha = arr[i].substring(arr[i].indexOf("=") + 1);
                     }
+                    if (arr[i].search("page") !== -1) {
+                        page = arr[i].substring(arr[i].indexOf("=") + 1);
+                    }
                 }
                 $("#" + alpha).removeClass("alphaItem").addClass("selected");
+                $("#" + page).addClass("active");
             });
         </script>
+
+        <!--首字母目录-->
         <div class="presAlpha">
             <ul>
                 {% for each in prescriptionAlpha %}
@@ -67,13 +78,20 @@
                 {% endfor %}
             </ul>
         </div>
-        <ul class="pagination">
-            {% for %}
-                <li><a></a></li>
-            {% endfor %}
-        </ul>
+
+        <!--页码-->
+        <div class="pageIndex">
+            <ul class="pagination">
+                <li><a>«</a></li>
+                {% for page in pageCount %}
+                    <li><a>{{ page }}</a></li>
+                {% endfor %}
+                <li><a>»</a></li>
+            </ul>
+        </div>
     {% endif %}
 
+    <!--经方目录-->
     {% if prescriptionCata is undefined %}
 
     {% elif prescriptionCata | length > 0 %}
@@ -103,6 +121,7 @@
         </script>
     {% endif %}
 
+    <!--经方-->
     {% if prescription %}
         <div class="presDetail">
             <div class="item">名称：{{ prescription[0] }}</div>
