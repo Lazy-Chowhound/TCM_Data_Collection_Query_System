@@ -119,7 +119,7 @@ def index():
             elif name is None and alpha is None and prescription is None:
                 return render_template('prescription.html')
         else:
-            return render_template('index_base.html')
+            return render_template('404.html')
     except mysql.connector.Error as e:
         abort(500)
 

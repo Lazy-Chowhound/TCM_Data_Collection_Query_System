@@ -148,3 +148,30 @@ ul.pagination li a.active {
 ul.pagination li a:hover:not(.active) {
     background-color: #ddd;
 }
+
+.back {
+    position: absolute;
+    left: 21%;
+    width:60%;
+    top: 580px;
+    display: flex;
+    justify-content: center;
+}
+
+.backBtn {
+    width: 100px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #66afe9;
+    background-color:transparent;
+    color: #66afe9;
+}
+
+.backBtn:hover {
+    width: 100px;
+    height: 40px;
+    border-radius: 4px;
+    border-color: #66afe9;
+    color: #ffffff;
+    background: #66afe9;
+}

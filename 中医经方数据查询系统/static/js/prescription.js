@@ -7,4 +7,7 @@ $(function () {
         else
             window.location.href = "/index?opt=4&&prescriptionName=" + content;
     });
+    $("#backBtn").click(function () {
+        window.history.go(-1);
+    });
 });
