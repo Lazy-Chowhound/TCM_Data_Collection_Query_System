@@ -45,7 +45,7 @@
     {% if prescriptionAlpha %}
         <script>
             $(function () {
-                // 获取url中alpha参数
+                // 获取url及alpha和page参数
                 let url = window.location.search;
                 let parameter = url.substring(url.indexOf("?") + 1);
                 let mainUrl = url.substring(0, url.indexOf("?"));

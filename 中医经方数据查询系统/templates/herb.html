@@ -16,6 +16,34 @@
     {% if herbs is undefined %}
 
     {% elif herbs | length > 0 %}
+        <script>
+            $(function () {
+                // 获取url及herb和page参数
+                let url = window.location.search;
+                let parameter = url.substring(url.indexOf("?") + 1);
+                let mainUrl = url.substring(0, url.indexOf("?"));
+                let herb = '';
+                let arr = parameter.split("&");
+                let page = '';
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i].search("herb") !== -1) {
+                        herb = arr[i].substring(arr[i].indexOf("=") + 1);
+                    }
+                    if (arr[i].search("page") !== -1) {
+                        page = arr[i].substring(arr[i].indexOf("=") + 1);
+                    }
+                }
+                //给页码动态绑定id
+                let pageArray = $(".pagination li a");
+                for (let i = 0; i < pageArray.length; i++) {
+                    pageArray.eq(i).attr('id', '' + i);
+                    if (i !== 0 || i !== pageArray.length - 1)
+                        pageArray.eq(i).attr('href', mainUrl + "?opt=3&herb=" + herb + "&page=" + i);
+                }
+                $("#" + page).addClass("active");
+            });
+        </script>
+
         <div class="herbArea">
             {% for herb in herbs %}
                 <div>药名：{{ herb[0] }}</div>
@@ -38,4 +66,17 @@
             });
         </script>
     {% endif %}
+
+    <!--页码-->
+    <div class="pageIndex">
+        <ul class="pagination">
+            <li><a>«</a></li>
+            {% for page in pageCount %}
+                <li><a>{{ page }}</a></li>
+            {% endfor %}
+            <li><a>»</a></li>
+        </ul>
+    </div>
+
+
 {% endblock %}

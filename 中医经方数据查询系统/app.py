@@ -71,14 +71,24 @@ def index():
                 return render_template('record.html', catalogs=catalogs)
         elif opt == '3':
             herb = request.args.get('herb')
+            page = request.args.get('page')
             if herb is None:
                 return render_template('herb.html')
             else:
                 cursor.execute("SELECT * FROM medical_info.herb WHERE name LIKE '%%%s%%'" % herb)
                 herbs = cursor.fetchall()
+                if len(herbs) % 5 == 0:
+                    count = len(herbs) / 5
+                else:
+                    count = len(herbs) // 5 + 1
+                pageCount = []
+                for i in range(count):
+                    pageCount.append(i)
+                beg = (int(page) - 1) * 5
+                herbs = herbs[beg:beg + 5]
                 connection.close()
                 cursor.close()
-                return render_template('herb.html', herbs=herbs)
+                return render_template('herb.html', herbs=herbs, pageCount=pageCount)
         elif opt == '4':
             alpha = request.args.get("alpha")
             name = request.args.get("prescriptionName")
@@ -141,16 +151,6 @@ def displayRecord():
         return render_template('detail.html', name=name)
     except mysql.connector.Error as e:
         abort(500)
-
-
-@app.route('/display', methods=['GET', 'POST'])
-def display():
-    """
-    获取ajax
-    :return:
-    """
-    data = request.get_data()
-    data = json.loads(data)
 
 
 @app.errorhandler(500)
