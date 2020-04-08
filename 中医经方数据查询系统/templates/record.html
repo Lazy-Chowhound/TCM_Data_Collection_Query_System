@@ -23,11 +23,16 @@
         <div class="catalogArea">
             <ul>
                 {% for catalog in catalogs %}
-                    <li class="cata">
+                    <li class="cataItem">
                         <a href="{{ url_for('displayRecord',name=catalog[0]) }}" target="_blank">
-                            <div>病名： {{ catalog[0] }}</div>
-                            <div>症状： {{ catalog[1] }}</div>
-                            <div>出处：{{ catalog[2] }}</div>
+                            <div class="cata">
+                                <div class="cataText">
+                                    <p>病名： {{ catalog[0] }}</p>
+                                    <p>症状： {{ catalog[1] }}</p>
+                                    <p>出处：{{ catalog[2] }}</p>
+                                </div>
+                                <div class="nav"></div>
+                            </div>
                         </a>
                         <hr class="separator">
                     </li>

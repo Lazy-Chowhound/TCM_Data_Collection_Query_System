@@ -73,6 +73,7 @@
     float: left;
     width: 25%;
     margin-top: 10px;
+    list-style: circle;
 }
 
 .presAlpha li a {

@@ -45,14 +45,11 @@
     {% if prescriptionAlpha %}
         <script>
             $(function () {
-                //给页码动态绑定id
-                let pageArray = $(".pagination li a");
-                for (let i = 0; i < pageArray.length; i++)
-                    pageArray.eq(i).attr('id', '' + i);
                 // 获取url中alpha参数
                 let url = window.location.search;
-                let str = url.substring(url.indexOf("?") + 1);
-                let arr = str.split("&");
+                let parameter = url.substring(url.indexOf("?") + 1);
+                let mainUrl = url.substring(0, url.indexOf("?"));
+                let arr = parameter.split("&");
                 let alpha = '';
                 let page = '';
                 for (let i = 0; i < arr.length; i++) {
@@ -62,6 +59,13 @@
                     if (arr[i].search("page") !== -1) {
                         page = arr[i].substring(arr[i].indexOf("=") + 1);
                     }
+                }
+                //给页码动态绑定id
+                let pageArray = $(".pagination li a");
+                for (let i = 0; i < pageArray.length; i++) {
+                    pageArray.eq(i).attr('id', '' + i);
+                    if (i !== 0 || i !== pageArray.length - 1)
+                        pageArray.eq(i).attr('href', mainUrl + "?opt=4&alpha=" + alpha + "&page=" + i);
                 }
                 $("#" + alpha).removeClass("alphaItem").addClass("selected");
                 $("#" + page).addClass("active");
