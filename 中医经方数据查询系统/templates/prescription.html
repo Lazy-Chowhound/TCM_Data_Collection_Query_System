@@ -99,18 +99,60 @@
     {% if prescriptionCata is undefined %}
 
     {% elif prescriptionCata | length > 0 %}
+        <script>
+            $(function () {
+                // 获取url及alpha和page参数
+                let url = window.location.search;
+                let parameter = url.substring(url.indexOf("?") + 1);
+                let mainUrl = url.substring(0, url.indexOf("?"));
+                let arr = parameter.split("&");
+                let prescriptionName = '';
+                let page = '';
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i].search("prescriptionName") !== -1) {
+                        prescriptionName = arr[i].substring(arr[i].indexOf("=") + 1);
+                    }
+                    if (arr[i].search("page") !== -1) {
+                        page = arr[i].substring(arr[i].indexOf("=") + 1);
+                    }
+                }
+                //给页码动态绑定id
+                let pageArray = $(".pagination li a");
+                for (let i = 0; i < pageArray.length; i++) {
+                    pageArray.eq(i).attr('id', '' + i);
+                    if (i !== 0 || i !== pageArray.length - 1)
+                        pageArray.eq(i).attr('href', mainUrl + "?opt=4&prescriptionName=" + prescriptionName + "&page=" + i);
+                }
+                $("#" + page).addClass("active");
+            });
+        </script>
+
         <div class="presCata">
             <ul>
                 {% for each in prescriptionCata %}
                     <li class="presItem">
                         <a href="{{ url_for('index',opt='4',prescription=each[0]) }}">
                             <div>名称：{{ each[0] }}</div>
-                            <div>功效：{{ each[1] }}</div>
+                            <div class="effect">
+                                <div class="hint">功效：</div>
+                                <div>{{ each[1] }}</div>
+                            </div>
                             <div>来源：{{ each[2] }}</div>
                         </a>
                         <hr class="separator">
                     </li>
                 {% endfor %}
+            </ul>
+        </div>
+
+        <!--页码-->
+        <div class="pageIndex">
+            <ul class="pagination">
+                <li><a>«</a></li>
+                {% for page in pageCount %}
+                    <li><a>{{ page }}</a></li>
+                {% endfor %}
+                <li><a>»</a></li>
             </ul>
         </div>
     {% elif prescriptionCata | length == 0 %}

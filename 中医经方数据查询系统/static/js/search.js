@@ -8,34 +8,14 @@ $(function () {
             alert("请选择选项");
         } else {
             if (option === 'illness') {
-                window.location.href = 'index?' + 'opt=1' + '&&illness=' + content;
+                window.location.href = 'index?' + 'opt=1' + '&&illness=' + content + '&&page=1';
             } else if (option === "symptom") {
-                window.location.href = 'index?' + 'opt=2' + '&&symptom=' + content;
+                window.location.href = 'index?' + 'opt=2' + '&&symptom=' + content + '&&page=1';
             } else if (option === "herb") {
-                window.location.href = 'index?' + 'opt=3' + '&&herb=' + content;
+                window.location.href = 'index?' + 'opt=3' + '&&herb=' + content + '&&page=1';
             } else if (option === "prescription") {
-                window.location.href = 'index?' + 'opt=4' + '&&prescriptionName=' + content;
+                window.location.href = 'index?' + 'opt=4' + '&&prescriptionName=' + content + '&&page=1';
             }
-            // $.ajax({
-            //     type: "POST",
-            //     // 发送的数据格式
-            //     contentType: 'application/json',
-            //     // 期待后端返回的格式
-            //     dataType: "json",
-            //     url: '/display',
-            //     data: JSON.stringify({'content': content, 'option': option}),
-            //     success: function (res) {
-            //         let option = res.option;
-            //         if (option === '-1') {
-            //             alert('查询失败，请重试！');
-            //         } else if (option === '3') {
-            //             window.location.href = 'index?' + 'opt=' + res.option + '&&herb=' + res.name + '&&effect:' + res.effect;
-            //         }
-            //     },
-            //     error: function (e) {
-            //         alert("网络出错");
-            //     }
-            // })
         }
     });
 });

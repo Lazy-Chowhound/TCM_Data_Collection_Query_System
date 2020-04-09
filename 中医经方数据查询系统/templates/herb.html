@@ -23,8 +23,8 @@
                 let parameter = url.substring(url.indexOf("?") + 1);
                 let mainUrl = url.substring(0, url.indexOf("?"));
                 let herb = '';
-                let arr = parameter.split("&");
                 let page = '';
+                let arr = parameter.split("&");
                 for (let i = 0; i < arr.length; i++) {
                     if (arr[i].search("herb") !== -1) {
                         herb = arr[i].substring(arr[i].indexOf("=") + 1);

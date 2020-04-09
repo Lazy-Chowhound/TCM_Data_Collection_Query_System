@@ -20,6 +20,40 @@
     {% if catalogs is undefined %}
 
     {% elif catalogs | length > 0 %}
+        <script>
+            $(function () {
+                // 获取url及illness和page参数
+                let url = window.location.search;
+                let parameter = url.substring(url.indexOf("?") + 1);
+                let mainUrl = url.substring(0, url.indexOf("?"));
+                let illness = '';
+                let symptom = '';
+                let page = '';
+                let arr = parameter.split("&");
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i].search("illness") !== -1) {
+                        illness = arr[i].substring(arr[i].indexOf("=") + 1);
+                    }
+                    if (arr[i].search("page") !== -1) {
+                        page = arr[i].substring(arr[i].indexOf("=") + 1);
+                    }
+                    if (arr[i].search("symptom") !== -1) {
+                        illness = arr[i].substring(arr[i].indexOf("=") + 1);
+                    }
+                }
+                //给页码动态绑定id
+                let pageArray = $(".pagination li a");
+                for (let i = 0; i < pageArray.length; i++) {
+                    pageArray.eq(i).attr('id', '' + i);
+                    if ((i !== 0 || i !== pageArray.length - 1) && illness !== '')
+                        pageArray.eq(i).attr('href', mainUrl + "?opt=1&illness=" + illness + "&page=" + i);
+                    else if ((i !== 0 || i !== pageArray.length - 1) && symptom !== '')
+                        pageArray.eq(i).attr('href', mainUrl + "?opt=2&symptom=" + symptom + "&page=" + i);
+                }
+                $("#" + page).addClass("active");
+            });
+        </script>
+
         <div class="catalogArea">
             <ul>
                 {% for catalog in catalogs %}
@@ -50,4 +84,16 @@
             });
         </script>
     {% endif %}
+
+    <!--页码-->
+    <div class="pageIndex">
+        <ul class="pagination">
+            <li><a>«</a></li>
+            {% for page in pageCount %}
+                <li><a>{{ page }}</a></li>
+            {% endfor %}
+            <li><a>»</a></li>
+        </ul>
+    </div>
+
 {% endblock %}

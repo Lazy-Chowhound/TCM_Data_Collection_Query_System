@@ -22,6 +22,7 @@ def index():
         opt = request.args.get('opt')
         if opt == '1':
             illness = request.args.get('illness')
+            page = request.args.get('page')
             if illness is None:
                 return render_template('record.html')
             else:
@@ -43,10 +44,17 @@ def index():
                     catalog.append(text[beg + 3:end])
 
                     catalogs.append(catalog)
-                return render_template('record.html', catalogs=catalogs)
+                count = getPage(catalogs, 4)
+                pageCount = []
+                for i in range(count):
+                    pageCount.append(i + 1)
+                beg = (int(page) - 1) * 4
+                catalogs = catalogs[beg:beg + 4]
+                return render_template('record.html', catalogs=catalogs, pageCount=pageCount)
 
         elif opt == '2':
             symptom = request.args.get('symptom')
+            page = request.args.get('page')
             if symptom is None:
                 return render_template('record.html')
             else:
@@ -68,7 +76,13 @@ def index():
                     catalog.append(text[beg + 3:end])
 
                     catalogs.append(catalog)
-                return render_template('record.html', catalogs=catalogs)
+                count = getPage(catalogs, 4)
+                pageCount = []
+                for i in range(count):
+                    pageCount.append(i + 1)
+                beg = (int(page) - 1) * 4
+                catalogs = catalogs[beg:beg + 4]
+                return render_template('record.html', catalogs=catalogs, pageCount=pageCount)
         elif opt == '3':
             herb = request.args.get('herb')
             page = request.args.get('page')
@@ -77,13 +91,10 @@ def index():
             else:
                 cursor.execute("SELECT * FROM medical_info.herb WHERE name LIKE '%%%s%%'" % herb)
                 herbs = cursor.fetchall()
-                if len(herbs) % 5 == 0:
-                    count = len(herbs) / 5
-                else:
-                    count = len(herbs) // 5 + 1
+                count = getPage(herbs, 5)
                 pageCount = []
                 for i in range(count):
-                    pageCount.append(i)
+                    pageCount.append(i + 1)
                 beg = (int(page) - 1) * 5
                 herbs = herbs[beg:beg + 5]
                 connection.close()
@@ -103,10 +114,7 @@ def index():
                 for each in res:
                     if getPinyinInitial(each[0]).upper() == alpha:
                         prescriptionAlpha.append(each)
-                if len(prescriptionAlpha) % 52 == 0:
-                    count = len(prescriptionAlpha) / 52
-                else:
-                    count = len(prescriptionAlpha) // 52 + 1
+                count = getPage(prescriptionAlpha, 52)
                 pageCount = []
                 for i in range(count):
                     pageCount.append(int(i + 1))
@@ -114,13 +122,20 @@ def index():
                 return render_template('prescription.html', prescriptionAlpha=prescriptionAlpha, pageCount=pageCount)
             # 按关键字查询
             elif name is not None and alpha is None and prescription is None:
+                page = request.args.get('page')
                 prescriptionCata = []
                 cursor.execute("SELECT * FROM medical_info.prescription WHERE name LIKE '%%%s%%'" % name)
                 res = cursor.fetchall()
                 for each in res:
                     presCata = [each[0], each[3], each[5]]
                     prescriptionCata.append(presCata)
-                return render_template('prescription.html', prescriptionCata=prescriptionCata)
+                count = getPage(prescriptionCata, 5)
+                pageCount = []
+                for i in range(count):
+                    pageCount.append(int(i + 1))
+                beg = (int(page) - 1) * 5
+                prescriptionCata = prescriptionCata[beg:beg + 5]
+                return render_template('prescription.html', prescriptionCata=prescriptionCata, pageCount=pageCount)
             # 某个经方
             elif prescription is not None and alpha is None and name is None:
                 cursor.execute("SELECT * FROM medical_info.prescription WHERE name=%s", [prescription])
@@ -171,6 +186,20 @@ def getPinyinInitial(string):
     """
     pinyinList = lazy_pinyin(string, errors='ignore')
     return pinyinList[0][0:1]
+
+
+def getPage(myList, eachPageCount):
+    """
+    获取页数
+    :param myList:
+    :param eachPageCount: 每页个数
+    :return:
+    """
+    length = len(myList)
+    count = length // eachPageCount
+    if length % eachPageCount != 0:
+        count += 1
+    return count
 
 
 if __name__ == '__main__':
