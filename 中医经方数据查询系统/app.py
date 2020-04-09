@@ -121,7 +121,7 @@ def index():
             if alpha is not None and name is None and prescription is None:
                 page = request.args.get('page')
                 prescriptionAlpha = []
-                cursor.execute("SELECT * FROM medical_info.prescription")
+                cursor.execute("SELECT name FROM medical_info.prescription")
                 res = cursor.fetchall()
                 beg = (int(page) - 1) * 52
                 for each in res:
