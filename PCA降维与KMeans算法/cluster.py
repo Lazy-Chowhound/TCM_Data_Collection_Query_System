@@ -6,6 +6,7 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.metrics import calinski_harabasz_score
 from sklearn.preprocessing import StandardScaler
+import mysql.connector
 
 
 class Cluster:
@@ -40,6 +41,10 @@ class Cluster:
         pca = PCA(n_components=dimension)
         self.newX = pca.fit_transform(self.standardX)
         print("降为{}维后各维度占比{}".format(dimension, pca.explained_variance_ratio_))
+        total = 0
+        for each in pca.explained_variance_ratio_:
+            total += each
+        print("降为{}维后维度总占比{}".format(dimension, total))
 
     def kMeans(self, category):
         """
@@ -53,7 +58,7 @@ class Cluster:
         # 评价标准之一calinski_harabasz分数 越大越好
         print("聚类{}簇的calinski_harabasz分数为{}".format(category, str(score)))
 
-    def clusterResult(self):
+    def clusterResult(self, showAll):
         """
         聚类结果
         :return:
@@ -61,9 +66,12 @@ class Cluster:
         statistics = {}
         for i in range(self.category):
             statistics[i] = 0
-        for each in self.kMeansModel.labels_:
+        categoryList = self.kMeansModel.labels_
+        for each in categoryList:
             statistics[each] += 1
         print(statistics)
+        if showAll is True:
+            print(categoryList)
 
     def drawGraph(self):
         """
@@ -86,12 +94,36 @@ class Cluster:
         plt.title("kMeans")
         plt.show()
 
+    def markHerb(self):
+        """
+        聚类结果写入数据库
+        :return:
+        """
+        connection = mysql.connector.connect(user="root", password="061210", database="medical_info")
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM medical_info.herb")
+        res = cursor.fetchall()
+        name = []
+        for each in res:
+            name.append(each[0])
+        count = 0
+        for each in self.kMeansModel.labels_:
+            cursor.execute("UPDATE medical_info.herb SET category=%s WHERE name=%s", [str(each), name[count]])
+            count += 1
+        connection.commit()
+        cursor.close()
+        connection.close()
+
 
 if __name__ == '__main__':
     cluster = Cluster()
+    dimension = 12
+    clus = 7
     cluster.readData()
     cluster.dataStandardization()
-    cluster.reduceDimension(2)
-    cluster.kMeans(7)
-    cluster.clusterResult()
-    cluster.drawGraph()
+    cluster.reduceDimension(dimension)
+    cluster.kMeans(clus)
+    cluster.clusterResult(showAll=False)
+    if dimension == 2:
+        cluster.drawGraph()
+    cluster.markHerb()

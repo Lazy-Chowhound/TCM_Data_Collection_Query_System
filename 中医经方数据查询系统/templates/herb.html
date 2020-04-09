@@ -8,10 +8,73 @@
         $('#prescription').removeClass('clickbtn');
     </script>
 
+    <div class="categoryArea">
+        <label>药材类别：</label>
+        <a id='0' class="categoryItem" href="{{ url_for('index',opt='3',category='0',page='1') }}">类一</a>
+        <a id='1' class="categoryItem" href="{{ url_for('index',opt='3',category='1',page='1') }}">类二</a>
+        <a id='2' class="categoryItem" href="{{ url_for('index',opt='3',category='2',page='1') }}">类三</a>
+        <a id='3' class="categoryItem" href="{{ url_for('index',opt='3',category='3',page='1') }}">类四</a>
+        <a id='4' class="categoryItem" href="{{ url_for('index',opt='3',category='4',page='1') }}">类五</a>
+        <a id='5' class="categoryItem" href="{{ url_for('index',opt='3',category='5',page='1') }}">类六</a>
+        <a id='6' class="categoryItem" href="{{ url_for('index',opt='3',category='6',page='1') }}">类七</a>
+    </div>
+
     <div class="searchArea">
         <label for="content"><input id="content" type="text" placeholder="请输入药材名..."/></label>
         <button id="searchBtn" type="button">搜 索</button>
     </div>
+
+    {% if centainHerbs %}
+        <script>
+            $(function () {
+                // 获取url及category和page参数
+                let url = window.location.search;
+                let parameter = url.substring(url.indexOf("?") + 1);
+                let mainUrl = url.substring(0, url.indexOf("?"));
+                let category = '';
+                let page = '';
+                let arr = parameter.split("&");
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i].search("category") !== -1) {
+                        category = arr[i].substring(arr[i].indexOf("=") + 1);
+                    }
+                    if (arr[i].search("page") !== -1) {
+                        page = arr[i].substring(arr[i].indexOf("=") + 1);
+                    }
+                }
+                //给页码动态绑定id
+                let pageArray = $(".pagination li a");
+                for (let i = 0; i < pageArray.length; i++) {
+                    pageArray.eq(i).attr('id', '' + i);
+                    if (i !== 0 || i !== pageArray.length - 1)
+                        pageArray.eq(i).attr('href', mainUrl + "?opt=3&category=" + category + "&page=" + i);
+                }
+                $("#" + page).addClass("active");
+                $("#" + category).removeClass("categoryItem").addClass("categorySelected");
+            });
+        </script>
+
+        <div class="herbCategory">
+            <ul>
+                {% for each in centainHerbs %}
+                    <li>
+                        <a href="{{ url_for('index',opt='3',herb=each,page='1') }}">{{ each[0] }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!--页码-->
+        <div class="pageIndex">
+            <ul class="pagination">
+                <li><a>«</a></li>
+                {% for page in pageCount %}
+                    <li><a>{{ page }}</a></li>
+                {% endfor %}
+                <li><a>»</a></li>
+            </ul>
+        </div>
+    {% endif %}
 
     {% if herbs is undefined %}
 
@@ -54,6 +117,17 @@
                 <hr class="separator">
             {% endfor %}
         </div>
+
+        <!--页码-->
+        <div class="pageIndex">
+            <ul class="pagination">
+                <li><a>«</a></li>
+                {% for page in pageCount %}
+                    <li><a>{{ page }}</a></li>
+                {% endfor %}
+                <li><a>»</a></li>
+            </ul>
+        </div>
     {% elif herbs | length == 0 %}
         <script>
             $(function () {
@@ -66,17 +140,5 @@
             });
         </script>
     {% endif %}
-
-    <!--页码-->
-    <div class="pageIndex">
-        <ul class="pagination">
-            <li><a>«</a></li>
-            {% for page in pageCount %}
-                <li><a>{{ page }}</a></li>
-            {% endfor %}
-            <li><a>»</a></li>
-        </ul>
-    </div>
-
 
 {% endblock %}

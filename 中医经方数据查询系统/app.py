@@ -86,9 +86,8 @@ def index():
         elif opt == '3':
             herb = request.args.get('herb')
             page = request.args.get('page')
-            if herb is None:
-                return render_template('herb.html')
-            else:
+            category = request.args.get('category')
+            if herb is not None:
                 cursor.execute("SELECT * FROM medical_info.herb WHERE name LIKE '%%%s%%'" % herb)
                 herbs = cursor.fetchall()
                 count = getPage(herbs, 5)
@@ -100,6 +99,20 @@ def index():
                 connection.close()
                 cursor.close()
                 return render_template('herb.html', herbs=herbs, pageCount=pageCount)
+            elif category is not None:
+                cursor.execute("SELECT name FROM medical_info.herb WHERE category=%s" % category)
+                certainHerbs = cursor.fetchall()
+                count = getPage(certainHerbs, 60)
+                pageCount = []
+                for i in range(count):
+                    pageCount.append(i + 1)
+                beg = (int(page) - 1) * 60
+                certainHerbs = certainHerbs[beg:beg + 60]
+                connection.close()
+                cursor.close()
+                return render_template('herb.html', centainHerbs=certainHerbs, pageCount=pageCount)
+            else:
+                return render_template('herb.html')
         elif opt == '4':
             alpha = request.args.get("alpha")
             name = request.args.get("prescriptionName")
