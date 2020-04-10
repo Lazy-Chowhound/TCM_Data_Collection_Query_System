@@ -117,7 +117,7 @@ class Cluster:
 
 if __name__ == '__main__':
     dimension = 12
-    category = 7
+    category = 8
 
     cluster = Cluster()
     cluster.readData()
