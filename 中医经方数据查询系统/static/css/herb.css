@@ -8,14 +8,14 @@
 .categoryItem {
     margin-left: 30px;
     text-decoration: none;
-    color: black;
+    color: cornflowerblue;
 }
 
 .categorySelected {
     margin-left: 30px;
     text-decoration: none;
     color: red;
-    border-bottom: 2px solid red;
+    border-bottom: 1px solid red;
 }
 
 .searchArea {
