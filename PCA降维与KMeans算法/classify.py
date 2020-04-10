@@ -137,7 +137,6 @@ class ModifyCsv:
 
 
 if __name__ == '__main__':
-    # 操作
     modifier = ModifyCsv('herb.csv', 'herb_ex.csv')
     modifier.read_csv()
     modifier.exportData()
