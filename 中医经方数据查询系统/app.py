@@ -123,15 +123,15 @@ def index():
                 prescriptionAlpha = []
                 cursor.execute("SELECT name FROM medical_info.prescription")
                 res = cursor.fetchall()
-                beg = (int(page) - 1) * 52
+                beg = (int(page) - 1) * 48
                 for each in res:
                     if getPinyinInitial(each[0]).upper() == alpha:
                         prescriptionAlpha.append(each)
-                count = getPage(prescriptionAlpha, 52)
+                count = getPage(prescriptionAlpha, 48)
                 pageCount = []
                 for i in range(count):
                     pageCount.append(int(i + 1))
-                prescriptionAlpha = prescriptionAlpha[beg:beg + 52]
+                prescriptionAlpha = prescriptionAlpha[beg:beg + 48]
                 return render_template('prescription.html', prescriptionAlpha=prescriptionAlpha, pageCount=pageCount)
             # 按关键字查询
             elif name is not None and alpha is None and prescription is None:
