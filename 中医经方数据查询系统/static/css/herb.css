@@ -1,18 +1,18 @@
 .categoryArea {
     position: absolute;
-    left: 33%;
+    left: 27%;
     top: 127px;
-    width: 40%;
+    width: 60%;
 }
 
 .categoryItem {
-    margin-left: 30px;
+    margin-left: 20px;
     text-decoration: none;
     color: cornflowerblue;
 }
 
 .categorySelected {
-    margin-left: 30px;
+    margin-left: 20px;
     text-decoration: none;
     color: red;
     border-bottom: 1px solid red;
