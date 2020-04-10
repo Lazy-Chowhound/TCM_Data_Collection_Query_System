@@ -1,12 +1,12 @@
 import csv
 
 import matplotlib.pyplot as plt
+import mysql.connector
 import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.metrics import calinski_harabasz_score
 from sklearn.preprocessing import StandardScaler
-import mysql.connector
 
 
 class Cluster:
@@ -116,13 +116,14 @@ class Cluster:
 
 
 if __name__ == '__main__':
-    cluster = Cluster()
     dimension = 12
-    clus = 7
+    category = 7
+
+    cluster = Cluster()
     cluster.readData()
     cluster.dataStandardization()
     cluster.reduceDimension(dimension)
-    cluster.kMeans(clus)
+    cluster.kMeans(category)
     cluster.clusterResult(showAll=False)
     if dimension == 2:
         cluster.drawGraph()
