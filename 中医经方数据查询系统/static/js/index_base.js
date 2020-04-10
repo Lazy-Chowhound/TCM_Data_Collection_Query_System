@@ -44,3 +44,11 @@ function getParameter() {
     res.push(mainUrl);
     return res;
 }
+
+function showPrompt() {
+    $(".main").fadeIn();
+    $('.promptBox').delay(300).slideDown();
+    $('.prompt_cancel').click(function () {
+        $('.promptBox').fadeOut();
+    });
+}

@@ -63,11 +63,7 @@
     {% elif catalogs | length == 0 %}
         <script>
             $(function () {
-                $(".main").fadeIn();
-                $('.promptBox').delay(300).slideDown();
-                $('.prompt_cancel').click(function () {
-                    $('.promptBox').fadeOut();
-                });
+                showPrompt();
             });
         </script>
     {% endif %}
