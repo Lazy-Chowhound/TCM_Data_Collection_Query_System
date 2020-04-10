@@ -23,24 +23,11 @@
         <script>
             $(function () {
                 // 获取url及illness和page参数
-                let url = window.location.search;
-                let parameter = url.substring(url.indexOf("?") + 1);
-                let mainUrl = url.substring(0, url.indexOf("?"));
-                let illness = '';
-                let symptom = '';
-                let page = '';
-                let arr = parameter.split("&");
-                for (let i = 0; i < arr.length; i++) {
-                    if (arr[i].search("illness") !== -1) {
-                        illness = arr[i].substring(arr[i].indexOf("=") + 1);
-                    }
-                    if (arr[i].search("page") !== -1) {
-                        page = arr[i].substring(arr[i].indexOf("=") + 1);
-                    }
-                    if (arr[i].search("symptom") !== -1) {
-                        illness = arr[i].substring(arr[i].indexOf("=") + 1);
-                    }
-                }
+                let res = getParameter("illness", "symptom", "page");
+                let illness = res[0];
+                let symptom = res[1];
+                let page = res[2];
+                let mainUrl = res[3];
                 //给页码动态绑定id
                 let pageArray = $(".pagination li a");
                 for (let i = 0; i < pageArray.length; i++) {

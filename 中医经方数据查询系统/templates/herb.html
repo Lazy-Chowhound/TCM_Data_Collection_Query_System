@@ -28,20 +28,10 @@
         <script>
             $(function () {
                 // 获取url及category和page参数
-                let url = window.location.search;
-                let parameter = url.substring(url.indexOf("?") + 1);
-                let mainUrl = url.substring(0, url.indexOf("?"));
-                let category = '';
-                let page = '';
-                let arr = parameter.split("&");
-                for (let i = 0; i < arr.length; i++) {
-                    if (arr[i].search("category") !== -1) {
-                        category = arr[i].substring(arr[i].indexOf("=") + 1);
-                    }
-                    if (arr[i].search("page") !== -1) {
-                        page = arr[i].substring(arr[i].indexOf("=") + 1);
-                    }
-                }
+                let res = getParameter("category", "page");
+                let category = res[0];
+                let page = res[1];
+                let mainUrl = res[2];
                 //给页码动态绑定id
                 let pageArray = $(".pagination li a");
                 for (let i = 0; i < pageArray.length; i++) {
@@ -82,20 +72,10 @@
         <script>
             $(function () {
                 // 获取url及herb和page参数
-                let url = window.location.search;
-                let parameter = url.substring(url.indexOf("?") + 1);
-                let mainUrl = url.substring(0, url.indexOf("?"));
-                let herb = '';
-                let page = '';
-                let arr = parameter.split("&");
-                for (let i = 0; i < arr.length; i++) {
-                    if (arr[i].search("herb") !== -1) {
-                        herb = arr[i].substring(arr[i].indexOf("=") + 1);
-                    }
-                    if (arr[i].search("page") !== -1) {
-                        page = arr[i].substring(arr[i].indexOf("=") + 1);
-                    }
-                }
+                let res = getParameter("herb", "page");
+                let herb = res[0];
+                let page = res[1];
+                let mainUrl = res[2]
                 //给页码动态绑定id
                 let pageArray = $(".pagination li a");
                 for (let i = 0; i < pageArray.length; i++) {

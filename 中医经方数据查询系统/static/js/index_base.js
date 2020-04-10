@@ -26,3 +26,21 @@ function getOpt() {
         }
     }
 }
+
+function getParameter() {
+    let len = arguments.length;
+    let url = window.location.search;
+    let parameter = url.substring(url.indexOf("?") + 1);
+    let mainUrl = url.substring(0, url.indexOf("?"));
+    let arr = parameter.split("&");
+    let res = [];
+    for (let i = 0; i < len; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[j].search(arguments[i]) !== -1) {
+                res.push(arr[j].substring(arr[j].indexOf("=") + 1));
+            }
+        }
+    }
+    res.push(mainUrl);
+    return res;
+}
