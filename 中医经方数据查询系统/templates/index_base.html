@@ -9,35 +9,34 @@
 </head>
 <body>
 
-<div class="background">
-    <div class="contentArea">
-        <div class="top">
-            <label class="title">中医经方查询系统</label>
-        </div>
-        <div class="horizontal"></div>
-        <div class="vertical">
-            <button id="record" class="button">病症与药方</button>
-            <button id="herb" class="button">药材及疗效</button>
-            <button id="prescription" class="button">经 方</button>
-        </div>
 
-        <!--后端数据区域-->
-        {% block content %}
-
-        {% endblock %}
-
+<div class="contentArea">
+    <div class="top">
+        <label class="title">中医经方查询系统</label>
+    </div>
+    <div class="horizontal"></div>
+    <div class="vertical">
+        <button id="record" class="button">病症与药方</button>
+        <button id="herb" class="button">药材及疗效</button>
+        <button id="prescription" class="button">经 方</button>
     </div>
 
-    <!--消息弹窗-->
-    <div class="main">
-        <div class="promptBox">
-            <div class="prompt">
-                <label class="prompt_text">您查找的信息不存在！</label>
-                <button id="prompt_cancel" class="prompt_cancel"></button>
-            </div>
-        </div>
-    </div>
+    <!--后端数据区域-->
+    {% block content %}
+
+    {% endblock %}
 
 </div>
+
+<!--消息弹窗-->
+<div class="main">
+    <div class="promptBox">
+        <div class="prompt">
+            <label class="prompt_text">您查找的信息不存在！</label>
+            <button id="prompt_cancel" class="prompt_cancel"></button>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

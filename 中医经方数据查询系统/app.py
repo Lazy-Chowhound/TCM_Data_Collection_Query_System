@@ -1,5 +1,7 @@
-import json
+# -*- coding:utf-8 -*-
+
 from datetime import timedelta
+
 import mysql.connector
 from flask import Flask, render_template, request, abort
 from pypinyin import lazy_pinyin
@@ -175,8 +177,12 @@ def displayRecord():
         name = request.args.get('name')
         cursor.execute("SELECT * FROM medical_info.medical_record WHERE name=%s", [name])
         record = cursor.fetchone()
-
-        return render_template('detail.html', name=name)
+        diagnose = record[2]
+        condition = record[3]
+        diagnose = reformatText(diagnose)
+        condition = reformatText(condition)
+        info = diagnose + condition
+        return render_template('detail.html', name=name, info=info)
     except mysql.connector.Error as e:
         abort(500)
 
@@ -213,6 +219,32 @@ def getPage(myList, eachPageCount):
     if length % eachPageCount != 0:
         count += 1
     return count
+
+
+def reformatText(string):
+    """
+    将医案按各项分割
+    :param string:
+    :return:
+    """
+    res = string.split(" ")
+    count = 0
+    while count < len(res):
+        if res[count] == '':
+            del res[count]
+        else:
+            count += 1
+    pos = 0
+    while pos < len(res):
+        if '：' not in res[pos] and "方剂组成：" in res[pos - 1]:
+            res[pos - 1] += ' ' + res[pos]
+            del res[pos]
+        elif '：' not in res[pos] and "婚育史：" in res[pos - 1]:
+            res[pos - 1] += ' ' + res[pos]
+            del res[pos]
+        else:
+            pos += 1
+    return res
 
 
 if __name__ == '__main__':

@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1bac80eb-bbcd-4a75-ab31-9fa95bde69ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../PCA降维与KMeans算法/cluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PCA降维与KMeans算法/cluster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/static/css/herb.css" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/static/css/herb.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/templates/herb.html" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/templates/herb.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/templates/index_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/templates/index_base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../中医经方数据查询系统/templates/prescription.html" beforeDir="false" afterPath="$PROJECT_DIR$/../中医经方数据查询系统/templates/prescription.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../中医经方数据查询系统/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,6 +139,7 @@
       <workItem from="1585541593684" duration="80000" />
       <workItem from="1586255446339" duration="20000" />
       <workItem from="1586424999598" duration="3375000" />
+      <workItem from="1586584974536" duration="14000" />
     </task>
     <task id="LOCAL-00001" summary="更改数据库">
       <created>1585541666221</created>
