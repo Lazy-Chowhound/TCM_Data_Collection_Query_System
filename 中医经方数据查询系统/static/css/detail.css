@@ -32,6 +32,7 @@ body {
     left: 210px;
     top: 50px;
     width: 1100px;
+    border-radius: 10px;
 }
 
 .recordArea p {

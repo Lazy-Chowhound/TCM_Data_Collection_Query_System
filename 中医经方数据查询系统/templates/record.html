@@ -60,6 +60,18 @@
                 {% endfor %}
             </ul>
         </div>
+
+        <!--页码-->
+        <div class="pageIndex">
+            <ul class="pagination">
+                <li><a>«</a></li>
+                {% for page in pageCount %}
+                    <li><a>{{ page }}</a></li>
+                {% endfor %}
+                <li><a>»</a></li>
+            </ul>
+        </div>
+
     {% elif catalogs | length == 0 %}
         <script>
             $(function () {
@@ -67,16 +79,5 @@
             });
         </script>
     {% endif %}
-
-    <!--页码-->
-    <div class="pageIndex">
-        <ul class="pagination">
-            <li><a>«</a></li>
-            {% for page in pageCount %}
-                <li><a>{{ page }}</a></li>
-            {% endfor %}
-            <li><a>»</a></li>
-        </ul>
-    </div>
 
 {% endblock %}
